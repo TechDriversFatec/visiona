@@ -1,0 +1,22 @@
+{
+  "name": "visiona",
+  "version": "1.0.0",
+  "description": "Projeto integrador do curso de Análise e desenvolvimento de sistemas na FATEC São José dos campos",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/douglas.souzag/visiona.git"
+  },
+  "keywords": [
+    "visiona"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/douglas.souzag/visiona/issues"
+  },
+  "homepage": "https://gitlab.com/douglas.souzag/visiona#readme"
+}
