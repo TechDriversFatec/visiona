@@ -1,0 +1,5 @@
+sentinelsat==0.13
+pandas==1.0.1
+flask==1.1.1
+Flask-Cors==3.0.8
+flask_restplus==0.13.0
