@@ -46,7 +46,8 @@ class Status(Resource):
 class criarArea(Resource):
     @area.expect(modelGeoJSON)
     def post(self):
-        geo = area.payload['geo_json']['geo_json']['geometry']['coordinates']
+        geo = area.payload['geo_json']['geometry']['coordinates']
+
         nome = area.payload['name']
 
         poligono = Poligono(geo,nome,'')
