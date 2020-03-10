@@ -2,3 +2,7 @@
 server/__pycache__/
 
 server/area.json
+
+*.zip
+
+server/treinamento/
