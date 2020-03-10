@@ -67,7 +67,7 @@ class Poligono:
         solo = api.soil_data(self.poligono_obj)
 
         dados = {
-            'data':solo.reference_time(timeformat='datetime.datetime'),
+            'data':solo.reference_time(timeformat='unix'),
             'tempSolo':solo.surface_temp(unit='celsius'),
             'tempSolo10cm':solo.ten_cm_temp(unit='celsius'),
             'umidadeSolo':solo.moisture
