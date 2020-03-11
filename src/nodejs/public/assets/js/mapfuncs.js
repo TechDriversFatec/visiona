@@ -44,13 +44,31 @@ $(document).ready(function(){
       var getCoordsFromArea = data.features[0].geometry.coordinates[0];
       var coords = turf.getCoords(getCoordsFromArea);
 
-      GeoJSON.features[0].geometry.coordinates = [coords];
+      GeoJSON.features[0].geometry.coordinates = coords;
+      GeoJSON = JSON.stringify(GeoJSON, null, 2);
+      console.log(GeoJSON);
       // restrict to area to 2 decimal points
       var rounded_area = Math.round(area * 100) / 100;
       answer.innerHTML =
       '<p><strong>' +
       rounded_area +
       '</strong></p><p>square meters</p>';
+    } else {
+      answer.innerHTML = '';
+      if (e.type !== 'draw.delete')
+      alert('Use the draw tools to draw a polygon!');
+    }
+  }
+
+  function getArea(e){
+    if (data.features.length > 0) {
+      var area = turf.area(data);
+      var getCoordsFromArea = data.features[0].geometry.coordinates[0];
+      var coords = turf.getCoords(getCoordsFromArea);
+
+      GeoJSON.features[0].geometry.coordinates = coords;
+      GeoJSON = JSON.stringify(GeoJSON, null, 2);
+      console.log(GeoJSON);
     } else {
       answer.innerHTML = '';
       if (e.type !== 'draw.delete')

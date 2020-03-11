@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://gitlab.com/douglas.souzag/visiona/issues"
   },
-  "homepage": "https://gitlab.com/douglas.souzag/visiona#readme"
+  "homepage": "https://gitlab.com/douglas.souzag/visiona#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "promise-mysql": "^4.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
 }

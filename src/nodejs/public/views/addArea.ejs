@@ -1,0 +1,18 @@
+<%- include ('./headers.ejs') -%>
+<script src="../assets/js/mapfuncs.js"></script>
+    <% if (message != '') { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+    <form class="add-player-form" action="/add" method="post" enctype="multipart/form-data">
+      <!-- CRIANDO A DIV DO MAPA -->
+      <div id="map" name="map"></div>
+
+      <div class="calculation-box">
+        <p>Área total selecionada.</p>
+        <div id="calculated-area"></div>
+        <button type="submit" class="btn-sm btn-primary float-center">Adicionar Área</button>
+      </div>
+    </form>
+</div>
+</body>
+</html>
