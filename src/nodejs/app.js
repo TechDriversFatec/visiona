@@ -3,6 +3,7 @@ const express = require('express');
 const conn = require('./connect.js');
 const bodyParser = require('body-parser');
 const { getHomePage, addAreaRed, addArea, editArea, deleteArea } = require('./routes/routes.js');
+const { check, validationResult } = require('express-validator');
 const VisionaDAO = require('./DAO/visionaDAO.js');
 const visionaDAO = new VisionaDAO();
 const app = express();
@@ -20,7 +21,9 @@ app.use(bodyParser.json()); // parse form data client
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
 
 app.get('/', getHomePage);
-app.get('/add', addArea);
+app.post('/add', addArea, [
+  check('geojson', 'geojson is required').not().isEmpty()
+]);
 app.get('/addRed', addAreaRed);
 app.get('/edit/:id', editArea);
 app.get('/delete/:id', deleteArea);

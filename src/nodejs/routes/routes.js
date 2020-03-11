@@ -29,17 +29,15 @@ module.exports = {
 
     addArea : async(req, res) => {
       let con = await conn();
-      let geojson = req.params.map;
+      const { geojson } = req.body;
       let scriptAdd = query.insert_geojson.replace('?', geojson);
 
       // execute query
       con.query(scriptAdd, (err, result) => {
           if (err) return res.status(500).send(err);
 
-          res.render('../public/views/addArea.ejs', {
-              title: 'Adicionar Areas',
-              message: ''
-          });
+          res.status(200);
+          res.redirect('/');
       });
     },
 
@@ -67,9 +65,7 @@ module.exports = {
             if (err) {
                 return res.status(500).send(err);
             }else{
-              return res.status(200).send({
-                mensagem : 'Deletado com Sucesso!'
-              });
+              res.status(200);
               res.redirect('/');
             }
         });
