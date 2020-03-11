@@ -1,46 +1,117 @@
-from flask import Flask, request, jsonify
+# coding: utf-8
+
+from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from flask_restplus import Api, Resource, fields
 from apiCopernicus import baixarArea
+from apiAgro import Poligono
 import json
 
 
 app = Flask(__name__)
+app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
+blueprint = Blueprint('api', __name__, url_prefix='/api')
 CORS(app)
-api = Api(app)
+api = Api(
+    blueprint,
+    doc='/doc/',
+    version = "1.0", 
+	title = "Visiona", 
+	description = "Descrição aqui"
+)
+app.register_blueprint(blueprint)
 
-model_geojson = api.model('Area',{'area': fields.String(required = True)})
-model_data = api.model('Data',{'data': fields.Date(required = True)})
-sentinel = api.namespace('sentinel', description='Principais APIs')
+sentinel = api.namespace('sentinel', description='Rotas principais')
+area = api.namespace('area', description='Áreas')
 
+#MODELS
 
-@sentinel.route('/teste', methods=['GET'])
-class Teste(Resource):
+modelGeoJSON = api.model('GeoJSON',{'geo_json': fields.Raw(required = True),'name': fields.String(required = True)})
+modelArea = api.model('Area',{'id': fields.String(required = True),'nome': fields.String(required = True)})
+
+#PARSERS
+
+parserExcluirArea = api.parser()
+parserExcluirArea.add_argument("id", location = "params",required=True ,help = "ID do poligono")
+
+parserInfoArea = api.parser()
+parserInfoArea.add_argument("id", location = "params",required=True ,help = "ID do poligono")
+
+@sentinel.route('/status', methods=['GET'])
+class Status(Resource):
     def get(self):
         return {'sucesso':'Api funcionando!'},200
 
-        
-@sentinel.route('/processar', methods=['POST'])
-class BaixarArea(Resource):
-    @sentinel.expect(model_geojson)
+@area.route('/criar')
+class criarArea(Resource):
+    @area.expect(modelGeoJSON)
     def post(self):
-        area = sentinel.payload['area']
+        geo = area.payload['geo_json']['geometry']['coordinates']
+
+        nome = area.payload['name']
+
+        poligono = Poligono(geo,nome,'')
+        poligono.criar()
+        return {'id':poligono.id}
+
+@area.route('/excluir')
+class deletarArea(Resource):
+    @area.expect(parserExcluirArea)
+    def delete(self):
+        id = request.args.get('id')
 
         try:
-            with open('area.json', 'w', encoding='utf-8') as arquivo:
-                json.dump(json.loads(area), arquivo, ensure_ascii=False, indent=4)
-            arquivo.close()
+            poligono = Poligono('','',id)
+            poligono.carregar()
+            poligono.deletar()
+            return 'Área excluida!',200
         except:
-            return {"erro":"Erro ao gerar geojson da área."}
+            return 'Área não existe!',200
+
+@area.route('/editar')
+class editarArea(Resource):
+    @area.expect(modelArea)
+    def post(self):
+        id = area.payload['id']
+        nome = area.payload['nome']
 
         try:
-            baixarArea()
+            poligono = Poligono('','',id)
+            poligono.carregar()
+            poligono.atualizar(nome)
+
+            return 'Área atualizada!',200
         except:
-            return {"erro":"Erro ao baixar área demarcada."}
+            return 'Área não existe!',200
 
-        
-        return {'sucesso':'teste'},200
+@area.route('/info')
+class infoArea(Resource):
+    @area.expect(parserInfoArea)
+    def get(self):
+        id = request.args.get('id')
 
+        try:
+            poligono = Poligono('','',id)
+            poligono.carregar()
+
+            return poligono.info(),200
+        except:
+            return 'Área não existe!',200
+
+@area.route('/info-solo')
+class infoAreaSolo(Resource):
+    @area.expect(parserInfoArea)
+    def get(self):
+        id = request.args.get('id')
+
+        try:
+            poligono = Poligono('','',id)
+            poligono.carregar()
+
+            return poligono.infoSolo(),200
+        except Exception as erro:
+            print(str(erro))
+            return 'Área não existe!',200
 
 
 
