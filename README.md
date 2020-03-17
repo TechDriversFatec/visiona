@@ -24,6 +24,9 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 -	Traçar métricas para analisar a região e como foi sua evolução durante o tempo
 -	Desenvolver um sistema web para gerenciar todo o mapa com as informações
 
+## Link para o servidor 
+http://54.39.167.235:5000/api/doc/
+
 ## Em desenvolvimento
 
 [API para processamento de imagens de satélite](http://54.39.167.235:5000/api/doc/)
