@@ -1,4 +1,4 @@
-#Integrantes do Grupo
+# Integrantes do Grupo
 -   Gabriel Matos (Scrum Master)
 -   José Elias (PO)
 -   Enzo Gerola
