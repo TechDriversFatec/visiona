@@ -30,3 +30,5 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 
 [CRUD para gerenciamento de áreas](http://158.69.2.191:5500/)
 
+## Documentação do Projeto
+Link --> https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing
