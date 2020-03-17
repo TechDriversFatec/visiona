@@ -1,3 +1,10 @@
+#Integrantes do Grupo
+-   Gabriel Matos (Scrum Master)
+-   José Elias (PO)
+-   Enzo Gerola
+-   Douglas Souza
+-   Henrique Alexandre
+
 # Visiona
 
 ## Situação atual e justificativa do projeto
