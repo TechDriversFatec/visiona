@@ -46,7 +46,7 @@ module.exports = class VisionaDAO {
     let con = await conn();
     try {
       await con.query("START TRANSACTION");
-      await con.query(qyert.delet_geojson, [id]);
+      await con.query(query.delet_geojson, [id]);
       await con.query("COMMIT");
       return true;
     } catch (e) {
