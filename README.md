@@ -32,6 +32,7 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 
 ## Documentação do Projeto
 Link --> https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing
+Planilha de custos --> https://docs.google.com/spreadsheets/d/1K1LMhtv2zpvaMf7OXXQadKsYZsrr-DMd_8A0W-zwfvQ/edit?usp=sharing
 
 ## Videos Demonstrativos
 Entrega 1 --> https://drive.google.com/open?id=11v4xIfAYC_t8zkmm5uXnqkraF5Oosq1n
