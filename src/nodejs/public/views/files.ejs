@@ -1,0 +1,29 @@
+<%- include ('./headers.ejs') -%>
+<div class="table-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form method="post" enctype="multipart/form-data" action="/upload">
+          <div class="card">
+            <div class="card-header">
+              Upload de Imagens
+            </div>
+            <div class="card-body">
+              <input type="file" name="file" />
+              <hr>
+              <button type="submit" class="btn-success btn_send">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<style media="screen">
+  .btn_send {
+    height: 40px;
+    border-radius: 10px;
+  }
+</style>
+</html>

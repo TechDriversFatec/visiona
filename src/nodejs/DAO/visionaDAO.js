@@ -8,9 +8,11 @@ module.exports = class VisionaDAO {
     try {
       await con.query('START TRANSACTION');
       let savedGeoJson = await con.query(
-        query.insert_geojson,[obj]
+        query.insert_geojson,
+        [obj]
       );
       await con.query('COMMIT');
+      obj.id = savedGeoJson.insertId;
       return obj;
     } catch (e) {
       await con.query('ROLLBACK');
