@@ -37,6 +37,9 @@ parserExcluirArea.add_argument("id", location = "params",required=True ,help = "
 parserInfoArea = api.parser()
 parserInfoArea.add_argument("id", location = "params",required=True ,help = "ID do poligono")
 
+parserCarregarArea = api.parser()
+parserCarregarArea.add_argument("id", location = "params",required=True ,help = "ID do poligono")
+
 @sentinel.route('/status', methods=['GET'])
 class Status(Resource):
     def get(self):
@@ -52,6 +55,15 @@ class criarArea(Resource):
 
         poligono = Poligono(geo,nome,'')
         poligono.criar()
+        return {'id':poligono.id}
+
+@area.route('/carregar')
+class carregarArea(Resource):
+    @area.expect(parserCarregarArea)
+    def post(self):
+        id = request.args.get('id')
+        poligono = Poligono('','',id)
+        poligono.carregar()
         return {'id':poligono.id}
 
 @area.route('/excluir')

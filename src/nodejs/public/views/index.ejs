@@ -1,0 +1,29 @@
+<%- include ('./headers.ejs') -%>
+<div class="table-wrapper">
+  <% if (areas.length > 0) {%>
+  <div class="container">
+      <div class="row">
+        <% areas.forEach((area, index) => { %>
+        <div class="col">
+          <div class="card text-white bg-dark mb-3" style="max-width: 35rem; border-radius: 10px;">
+            <div class="card-body">
+              <h5 class="card-title">ID: ( <%= area.id_area %> )</h5>
+              <p class="card-text">
+                Coordenadas:
+                <%= area.geojson ? area.geojson : '' %>
+              </p>
+              <a href="/edit/<%= area.id_area %>" class="btn btn-warning">Editar</a>
+              <a href="/delete/<%= area.id_area %>" class="btn btn-danger">Deletar</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p class="text-center">No Areas found. Go <a href="/addRed">here</a> to add areas.</p>
+    <% } %>
+  </div>
+</div>
+</div>
+</body>
+</html>

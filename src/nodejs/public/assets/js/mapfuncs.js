@@ -44,17 +44,22 @@ $(document).ready(function(){
       var getCoordsFromArea = data.features[0].geometry.coordinates[0];
       var coords = turf.getCoords(getCoordsFromArea);
 
-      GeoJSON.features[0].geometry.coordinates = [coords];
+      GeoJSON.features[0].geometry.coordinates = coords;
+      // GeoJSON = JSON.stringify(GeoJSON, null, 2);
+      GeoJSON = JSON.stringify(GeoJSON);
+      $('#geojson').val(GeoJSON);
+      console.log(GeoJSON);
       // restrict to area to 2 decimal points
       var rounded_area = Math.round(area * 100) / 100;
       answer.innerHTML =
       '<p><strong>' +
       rounded_area +
-      '</strong></p><p>square meters</p>';
+      '</strong></p><p>Metros Quadrados</p>';
     } else {
       answer.innerHTML = '';
       if (e.type !== 'draw.delete')
       alert('Use the draw tools to draw a polygon!');
     }
   }
+
 });

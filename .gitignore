@@ -2,6 +2,7 @@
 server/__pycache__/
 
 server/area.json
+node_modules/
 
 *.zip
 
