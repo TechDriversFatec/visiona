@@ -1,9 +1,9 @@
 # Integrantes do Grupo
 -   Gabriel Matos (Scrum Master)
 -   José Elias (PO)
--   Enzo Gerola
--   Douglas Souza
--   Henrique Alexandre
+-   Enzo Gerola (Desenvolvedor Back-end)
+-   Douglas Souza (Desenvolvedor Fullstack)
+-   Henrique Alexandre (Desenvolvedor Front-end)
 
 # Visiona
 
@@ -31,7 +31,9 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 [CRUD para gerenciamento de áreas](http://158.69.2.191:5500/)
 
 ## Documentação do Projeto
-Link --> https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing
+-   Link --> https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing
+-   Planilha de custos --> https://docs.google.com/spreadsheets/d/1K1LMhtv2zpvaMf7OXXQadKsYZsrr-DMd_8A0W-zwfvQ/edit?usp=sharing
 
 ## Videos Demonstrativos
-Link --> https://drive.google.com/open?id=11v4xIfAYC_t8zkmm5uXnqkraF5Oosq1n
+-   Entrega 1 --> https://drive.google.com/open?id=11v4xIfAYC_t8zkmm5uXnqkraF5Oosq1n
+-   Entrega 2 --> https://drive.google.com/drive/folders/1vvX4IwPIFRX6eB67EHwJbeBE7Wo0cXyM

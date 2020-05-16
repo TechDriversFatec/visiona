@@ -4,7 +4,7 @@ const dbConfig = {
   user: 'enzogerola',
   password: '@Enzo9900',
   database: 'visiona',
-  host: '158.69.2.191',
+  host: 'bd.enzogerola.com',
   connectionLimit: 10
 };
 
