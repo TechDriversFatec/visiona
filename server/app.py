@@ -61,8 +61,7 @@ class criarArea(Resource):
 class carregarArea(Resource):
     @area.expect(parserCarregarArea)
     def post(self):
-        id = area.payload['id']
-
+        id = request.args.get('id')
         poligono = Poligono('','',id)
         poligono.carregar()
         return {'id':poligono.id}
