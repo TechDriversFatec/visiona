@@ -68,9 +68,9 @@ class Poligono:
 
         dados = {
             'data':solo.reference_time(timeformat='unix'),
-            'tempSolo':solo.surface_temp(unit='celsius'),
-            'tempSolo10cm':solo.ten_cm_temp(unit='celsius'),
-            'umidadeSolo':solo.moisture
+            'tempSolo':float(solo.surface_temp(unit='celsius')),
+            'tempSolo10cm':float(solo.ten_cm_temp(unit='celsius')),
+            'umidadeSolo':float(solo.moisture)
         }
 
         return dados
