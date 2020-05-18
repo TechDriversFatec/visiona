@@ -36,4 +36,4 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 
 ## Videos Demonstrativos
 -   Entrega 1 --> https://drive.google.com/open?id=11v4xIfAYC_t8zkmm5uXnqkraF5Oosq1n
--   Entrega 2 --> https://drive.google.com/drive/folders/1vvX4IwPIFRX6eB67EHwJbeBE7Wo0cXyM
+-   Entrega 2 --> https://drive.google.com/open?id=1qI51W90t1r8VAVSixZajOPehkBhtmiVV
