@@ -1,16 +1,57 @@
+import Mapbox from "mapbox-gl";
+import VueMapbox from "vue-mapbox";
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
 export default {
-    name: 'Home',
-    data() {
-        return {
-        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        zoom: 13,
-        center: [52.529562,  13.413047],
-        lista : null
-        }
-    },
-    methods: {
-        teste(){
-            console.log(this.lista)
-        }
-    },
+  name: 'Home',
+  components: {
+    Mapbox,
+    VueMapbox,
+    MapboxDraw
+  },
+  data() {
+    return {
+      obj : {},
+      map: {
+        accessToken: 'pk.eyJ1IjoiZW56b2dlcm9sYSIsImEiOiJjanZlMnoxamUwOWg0NDNwMW00Z2s2OHVsIn0.pMtAJJpUbQgRGnKRpgmpRw',
+        mapStyle: 'mapbox://styles/mapbox/satellite-v9',
+        center: [-91.874, 42.76], // posição inicial
+        zoom: 12, // zoom default
+      },
+    }
+  },
+  methods: {
+    initMap(){
+      // Access Token - MapBox
+      var map = new Mapbox.Map({
+        accessToken: this.map.accessToken,
+        container: 'mapbox',
+        style: this.map.mapStyle,
+        center: this.map.center,
+        zoom: this.map.zoom
+      });
+
+      // Adicionando dependências
+      var Draw = new MapboxDraw();
+      map.addControl(Draw, 'top-right');
+
+      // Método para quando a seleção for criada
+      map.on('draw.create', () => {
+        var data = Draw.getAll();
+        console.log({
+          data: data
+        });
+      })
+      // Método para quando a seleção for atualizada
+      map.on('draw.update', () => {
+        var data = Draw.getAll();
+        console.log({
+          data: data
+        });
+      })
+
+    }
+  },
+  mounted(){
+    this.initMap()
+  }
 }

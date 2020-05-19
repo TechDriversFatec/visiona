@@ -7,14 +7,14 @@ import vuetify from './plugins/vuetify';
 import { LMap, LTileLayer } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 import LDrawToolbar from 'vue2-leaflet-draw-toolbar';
-// ...
+import Mapbox from "mapbox-gl";
 Vue.config.productionTip = false
 
 //Registrando componentes do Leaflet
+Vue.use(Mapbox);
 Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);
 Vue.component('l-draw-toolbar', LDrawToolbar);
-
 
 new Vue({
   router,
