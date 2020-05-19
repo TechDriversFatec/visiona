@@ -1,10 +1,6 @@
 <template>
-  <div id="mapbox" class="mapbox">
+  <div>
+    <Map></Map>
   </div>
 </template>
 <script src="./HomeController.js"></script>
-<style scoped="./mapbox">
-  .mapbox{
-    height: 750px;
-  }
-</style>
