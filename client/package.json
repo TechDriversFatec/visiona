@@ -12,13 +12,10 @@
     "@turf/buffer": "^5.1.5",
     "@turf/collect": "^6.0.1",
     "core-js": "^3.6.4",
-    "leaflet": "^1.6.0",
     "mapbox-gl": "^1.10.1",
     "vue": "^2.6.11",
     "vue-mapbox": "^0.4.1",
     "vue-router": "^3.1.6",
-    "vue2-leaflet": "^2.5.2",
-    "vue2-leaflet-draw-toolbar": "^0.1.1",
     "vuetify": "^2.2.11"
   },
   "devDependencies": {
