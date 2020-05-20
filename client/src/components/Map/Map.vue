@@ -4,18 +4,20 @@
     <div id="mapbox" class="mapbox"></div>
 
     
-    <v-card dark width="24%">
+    <v-card tile dark width="24%">
       <v-card-title>Informações</v-card-title>
-      <v-card-content>
+      <v-card-text>
         <v-textarea
           label="GEOJson"
-          disabled
+          readonly
+          clearable
           :value="geojson"
           auto-grow
           outlined
           row-height="25"
         ></v-textarea>
-      </v-card-content>
+      </v-card-text>
+      <v-btn>TESTE PORRA</v-btn>
     </v-card>
 
     </v-row>

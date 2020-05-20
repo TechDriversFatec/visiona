@@ -1,22 +1,22 @@
 <template>
-  <v-app>
+  <v-app style="background-color:grey">
     <Navbar></Navbar>
     <v-content class="ma-4">
       <router-view></router-view>
     </v-content>
-    <!-- <Footer></Footer> -->
+    <Footer></Footer>
   </v-app>
 </template>
 
 <script>
-// import Footer from './components/Footer/Footer.vue'
+import Footer from './components/Footer/Footer.vue'
 import Navbar from './components/Navbar/Navbar.vue'
 
 export default {
   name: 'App',
 
   components: {
-    // Footer,
+    Footer,
     Navbar,
   },
 
