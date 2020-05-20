@@ -4,20 +4,34 @@
     <div id="mapbox" class="mapbox"></div>
 
     
-    <v-card tile dark width="24%">
+    <v-card align="center" tile dark width="24%">
       <v-card-title>Informações</v-card-title>
       <v-card-text>
         <v-textarea
           label="GEOJson"
           readonly
           clearable
-          :value="geojson"
+          :value="poligono.geojson"
           auto-grow
           outlined
           row-height="25"
         ></v-textarea>
+        <v-textarea
+          label="Area (m²)"
+          readonly
+          clearable
+          :value="poligono.area_m2"
+          outlined
+        ></v-textarea>
+        <v-textarea
+          label="Area (ha)"
+          readonly
+          clearable
+          :value="poligono.area_ha"
+          outlined
+        ></v-textarea>
       </v-card-text>
-      <v-btn>TESTE PORRA</v-btn>
+      <v-btn class="primary">Criar poligono</v-btn>
     </v-card>
 
     </v-row>

@@ -1,16 +1,25 @@
 import Mapbox from "mapbox-gl";
+import MapboxGeocoder from "mapbox-gl-geocoder"
 import VueMapbox from "vue-mapbox";
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import * as turf from '@turf/turf' 
+
 export default {
   components: {
     Mapbox,
     VueMapbox,
-    MapboxDraw
+    MapboxDraw,
   },
   data() {
     return {
       obj : {},
       geojson:null,
+      geo_area:null,
+      poligono: {
+        geojson: null,
+        area_m2: null,
+        area_ha: null,
+      },
       map: {
         accessToken: 'pk.eyJ1IjoiZW56b2dlcm9sYSIsImEiOiJjanZlMnoxamUwOWg0NDNwMW00Z2s2OHVsIn0.pMtAJJpUbQgRGnKRpgmpRw',
         mapStyle: 'mapbox://styles/mapbox/satellite-streets-v11',
@@ -21,7 +30,6 @@ export default {
   },
   methods: {
     initMap(){
-      // Access Token - MapBox
       var map = new Mapbox.Map({
         accessToken: this.map.accessToken,
         container: 'mapbox',
@@ -30,24 +38,45 @@ export default {
         zoom: this.map.zoom
       });
 
-      // Adicionando dependências
+      // Adicionando controles
+
+      // Ferramenta de desenhar poligonos
       var Draw = new MapboxDraw();
       map.addControl(Draw, 'top-right');
+
+      // Ferramenta de pesquisa por endereço
+      var geocoder = new MapboxGeocoder({
+        accessToken: this.map.accessToken,
+        mapboxgl: Mapbox,
+        placeholder: 'Pesquisar',
+        });
+      map.addControl(geocoder,"top-left");
+
+      // Ferramentas de navegação
+      map.addControl(new Mapbox.NavigationControl(),"top-left");
+      
+      // Ferramenta de Tela cheia
+      map.addControl(new Mapbox.FullscreenControl(),"top-left");
+      
 
       // Método para quando a seleção for criada
       map.on('draw.create', () => {
         var data = Draw.getAll();
-        this.geojson = JSON.stringify(data);
-        console.log({
-          data: data
-        });
+        this.poligono.geojson = JSON.stringify(data);
+        
+        //Calculando area em metros quadrados
+        this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
+        this.poligono.area_ha = this.poligono.area_m2 / 10000
       })
+
       // Método para quando a seleção for atualizada
       map.on('draw.update', () => {
         var data = Draw.getAll();
-        console.log({
-          data: data
-        });
+        this.poligono.geojson = JSON.stringify(data);
+        
+        //Calculando area em metros quadrados
+        this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
+        this.poligono.area_ha = this.poligono.area_m2 / 10000
       })
 
     }
