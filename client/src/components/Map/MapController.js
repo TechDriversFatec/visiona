@@ -16,15 +16,23 @@ export default {
       obj : {},
       geojson:null,
       geo_area:null,
+      form: false,
       poligono: {
         geojson: null,
         area_m2: null,
         area_ha: null,
       },
+
+      rules: {
+        area_m2: v => v < 30000000 || 'Tamanho do poligono não pode exceder 30 milhoões de m²',
+        area_ha: v => v < 3000 || 'Tamanho do poligono não pode exceder 3000 hectares'
+      },
+
+
       map: {
         accessToken: 'pk.eyJ1IjoiZW56b2dlcm9sYSIsImEiOiJjanZlMnoxamUwOWg0NDNwMW00Z2s2OHVsIn0.pMtAJJpUbQgRGnKRpgmpRw',
         mapStyle: 'mapbox://styles/mapbox/satellite-streets-v11',
-        center: [-91.874,42.76], // posição inicial
+        center: [-45.7958296,-23.1623703], // posição inicial
         zoom: 12, // zoom default
       },
     }
