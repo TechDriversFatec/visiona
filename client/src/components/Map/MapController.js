@@ -2,6 +2,7 @@ import Mapbox from "mapbox-gl";
 import MapboxGeocoder from "mapbox-gl-geocoder"
 import VueMapbox from "vue-mapbox";
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import Shpwrite from 'shp-write'
 import * as turf from '@turf/turf' 
 
 export default {
@@ -67,6 +68,9 @@ export default {
         //Calculando area em metros quadrados
         this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
         this.poligono.area_ha = this.poligono.area_m2 / 10000
+        
+        //Criando a shapefile
+        Shpwrite.download(data)
       })
 
       // Método para quando a seleção for atualizada
