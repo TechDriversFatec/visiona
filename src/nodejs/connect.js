@@ -1,10 +1,13 @@
 const mysql = require('promise-mysql');
 
 const dbConfig = {
-  user: 'enzogerola',
-  password: '@Enzo9900',
+  // user: 'enzogerola',
+  user: 'root',
+  // password: '@Enzo9900',
+  password: 'root',
   database: 'visiona',
-  host: 'bd.enzogerola.com',
+  // host: 'bd.enzogerola.com',
+  host: 'localhost',
   connectionLimit: 10
 };
 
