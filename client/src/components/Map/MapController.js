@@ -21,11 +21,13 @@ export default {
         geojson: null,
         area_m2: null,
         area_ha: null,
+        nome: null,
       },
 
       rules: {
-        area_m2: v => v < 30000000 || 'Tamanho do poligono não pode exceder 30 milhoões de m²',
-        area_ha: v => v < 3000 || 'Tamanho do poligono não pode exceder 3000 hectares'
+        area_m2: v => v < 30000000 || 'Tamanho do poligono não pode exceder 30 milhoẽs de m²',
+        area_ha: v => v < 3000 || 'Tamanho do poligono não pode exceder 3000 hectares',
+        nome: v => v != null || 'Nome da área não pode ficar em branco!'
       },
 
 
