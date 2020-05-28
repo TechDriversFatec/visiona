@@ -18,7 +18,11 @@
           <v-icon size="24px">{{ icon }}</v-icon>
         </v-btn>
       </v-card-text>
+      <!-- <v-img
+        :src="'http://api.agromonitoring.com/image/1.0/1005c2bff00/5ecf0b505214af7662ddcd3c?appid=cb32f6df01ff0567b92ead6813e10c9d'"
+      >
 
+      </v-img> -->
       <v-card-text class="white--text pt-0">
         Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Atirei o pau no gatis, per gatis num morreus. Copo furadis é disculpa de bebadis, arcu quam euismod magna. Si num tem leite então bota uma pinga aí cumpadi!
         Diuretics paradis num copo é motivis de denguis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo! Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Casamentiss faiz malandris se pirulitá.

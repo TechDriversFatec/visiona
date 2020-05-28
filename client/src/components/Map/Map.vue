@@ -8,6 +8,12 @@
       <v-card-title>Informações</v-card-title>
       <v-card-text>
         <v-form v-model="form">
+          <v-text-field
+            label="Nome"
+            :value="poligono.nome"
+            :rules = "[rules.nome]"
+            outlined
+          ></v-text-field>
           <v-textarea
             label="GEOJson"
             readonly
