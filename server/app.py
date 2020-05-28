@@ -3,7 +3,6 @@
 from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from flask_restplus import Api, Resource, fields
-from apiCopernicus import baixarArea
 from apiAgro import Poligono
 import json
 
@@ -49,7 +48,8 @@ class Status(Resource):
 class criarArea(Resource):
     @area.expect(modelGeoJSON)
     def post(self):
-        geo = area.payload['geo_json']['geometry']['coordinates']
+        
+        geo = area.payload['geo_json']['features'][0]['geometry']['coordinates']
 
         nome = area.payload['name']
 

@@ -2,6 +2,7 @@ import Mapbox from "mapbox-gl";
 import MapboxGeocoder from "mapbox-gl-geocoder"
 import VueMapbox from "vue-mapbox";
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import Shpwrite from 'shp-write'
 import * as turf from '@turf/turf' 
 
 export default {
@@ -20,11 +21,13 @@ export default {
         geojson: null,
         area_m2: null,
         area_ha: null,
+        nome: null,
       },
 
       rules: {
-        area_m2: v => v < 30000000 || 'Tamanho do poligono não pode exceder 30 milhoões de m²',
-        area_ha: v => v < 3000 || 'Tamanho do poligono não pode exceder 3000 hectares'
+        area_m2: v => v < 30000000 || 'Tamanho do poligono não pode exceder 30 milhoẽs de m²',
+        area_ha: v => v < 3000 || 'Tamanho do poligono não pode exceder 3000 hectares',
+        nome: v => v != null || 'Nome da área não pode ficar em branco!'
       },
 
 
@@ -75,6 +78,9 @@ export default {
         //Calculando area em metros quadrados
         this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
         this.poligono.area_ha = this.poligono.area_m2 / 10000
+        
+        //Criando a shapefile
+        Shpwrite.download(data)
       })
 
       // Método para quando a seleção for atualizada
