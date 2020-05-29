@@ -7,3 +7,9 @@ node_modules/
 *.zip
 
 server/treinamento/
+
+server/POLYGON.prj
+
+*.shx
+
+*.shp

@@ -1,25 +1,57 @@
 <template>
   <div>
-    <l-map
-      ref="map"
-      :zoom="zoom"
-      :center="center"
-      style="width:500px;height:500px"
-    >
-      <l-draw-toolbar 
-        position="topright"
-        :drawnItems="lista"
-      />
-      <l-tile-layer 
-      :url="url"
-      attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-      ></l-tile-layer>
-      <l-tile-layer 
-      url="https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png"
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-      ></l-tile-layer>
-    </l-map>
+    <v-row justify="space-between">
+    <div id="mapbox" class="mapbox"></div>
+
+    
+    <v-card align="center" tile dark width="24%">
+      <v-card-title>Informações</v-card-title>
+      <v-card-text>
+        <v-form v-model="form">
+          <v-text-field
+            label="Nome"
+            v-model="poligono.nome"
+            outlined
+          ></v-text-field>
+          <v-textarea
+            label="GEOJson"
+            readonly
+            :value="JSON.stringify(poligono.geojson)"
+            auto-grow
+            outlined
+            row-height="25"
+          ></v-textarea>
+          <v-text-field
+            label="Area (m²)"
+            readonly
+            :value="poligono.area_m2"
+            :rules = "[rules.area_m2]"
+            outlined
+          ></v-text-field>
+          <v-text-field
+            label="Area (ha)"
+            readonly
+            :value="poligono.area_ha"
+            :rules = "[rules.area_ha]"
+            outlined
+          ></v-text-field>
+        </v-form>
+        </v-card-text>
+      <v-btn 
+      class="primary"
+      :disabled="!form"
+      @click="processarPoligono()"
+      >Processar poligono</v-btn>
+    </v-card>
+
+    </v-row>
   </div>
 </template>
+<script src="./MapController.js"></script>
 
-<script src="MapController.js"></script>
+<style scoped="./mapbox">
+  .mapbox{
+    width: 75%;
+    height: 750px;
+  }
+</style>

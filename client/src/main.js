@@ -3,18 +3,12 @@ import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify';
 
-//Leaflet
-import { LMap, LTileLayer } from 'vue2-leaflet';
-import 'leaflet/dist/leaflet.css';
-import LDrawToolbar from 'vue2-leaflet-draw-toolbar';
+//Mapbox
 import Mapbox from "mapbox-gl";
-Vue.config.productionTip = false
+Vue.use(Mapbox);//Mapa
 
-//Registrando componentes do Leaflet
-Vue.use(Mapbox);
-Vue.component('l-map', LMap);
-Vue.component('l-tile-layer', LTileLayer);
-Vue.component('l-draw-toolbar', LDrawToolbar);
+
+Vue.config.productionTip = false
 
 new Vue({
   router,
