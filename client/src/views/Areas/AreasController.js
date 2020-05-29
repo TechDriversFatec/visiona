@@ -1,6 +1,6 @@
-import Episodios from '../../service/episodios'
 import Card from '../../components/Card/Card.vue'
-// import Episodio from '../../components/Episodio/Episodio.vue'
+//Services
+import Areas from '../../services/areas'
 
 export default {
     components: {
@@ -9,20 +9,22 @@ export default {
     },
     data () {
       return {
-        arrayEpisodios: [],
+        arrayAreas: [],
         link : '',
       }
     },
     mounted () {
 
-      if (localStorage.getItem('data')){
-        this.arrayEpisodios = JSON.parse(localStorage.getItem('data'));
-      } else {
-        Episodios.listar().then(resposta =>{
-          this.arrayEpisodios = resposta.data;
+      // if (localStorage.getItem('data')){
+      //   this.arrayAreas = JSON.parse(localStorage.getItem('data'));
+      //   console.log(this.arrayAreas)
+      // } else {
+        Areas.retornarAreas().then(resposta =>{
+          this.arrayAreas = resposta.data.areas;
           localStorage.setItem('data', JSON.stringify(resposta.data))
+          console.log(this.arrayAreas)
         })
-      }
+      // }
     },
     methods: {
       formatarNum(num){

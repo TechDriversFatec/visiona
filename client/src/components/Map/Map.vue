@@ -10,14 +10,13 @@
         <v-form v-model="form">
           <v-text-field
             label="Nome"
-            :value="poligono.nome"
-            :rules = "[rules.nome]"
+            v-model="poligono.nome"
             outlined
           ></v-text-field>
           <v-textarea
             label="GEOJson"
             readonly
-            :value="poligono.geojson"
+            :value="JSON.stringify(poligono.geojson)"
             auto-grow
             outlined
             row-height="25"
@@ -41,7 +40,8 @@
       <v-btn 
       class="primary"
       :disabled="!form"
-      >Criar poligono</v-btn>
+      @click="processarPoligono()"
+      >Processar poligono</v-btn>
     </v-card>
 
     </v-row>
