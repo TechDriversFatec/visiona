@@ -25,10 +25,10 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 -	Desenvolver um sistema web para gerenciar todo o mapa com as informações
 
 
-## [Documentação](https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing) do Projeto
--   Documentos --> https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing
--   Planilha de custos --> https://docs.google.com/spreadsheets/d/1K1LMhtv2zpvaMf7OXXQadKsYZsrr-DMd_8A0W-zwfvQ/edit?usp=sharing
--   Gráfico Burndown --> https://docs.google.com/spreadsheets/d/1T-Um5j_i17QHgmUDWkdYQWlF-Beda6Tq5OJ0FkCOkxE/edit?usp=sharing
+## Documentação do Projeto
+-   [Documentos](https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing)
+-   [Planilha de custos](https://docs.google.com/spreadsheets/d/1K1LMhtv2zpvaMf7OXXQadKsYZsrr-DMd_8A0W-zwfvQ/edit?usp=sharing)
+-   [Gráfico Burndown](https://docs.google.com/spreadsheets/d/1T-Um5j_i17QHgmUDWkdYQWlF-Beda6Tq5OJ0FkCOkxE/edit?usp=sharing)
 
 ## Entregas (Videos e [Priorizações](https://drive.google.com/file/d/1HBAGodFF4nQXLZTeCOb1BIqBj2UKQeVP/view?usp=sharing))
 - [x]  Entrega 1 --> [Video Demonstrativo entrega 1](https://drive.google.com/open?id=11v4xIfAYC_t8zkmm5uXnqkraF5Oosq1n)
