@@ -13,11 +13,13 @@
       max-width="600"
     >
       <v-card dark>
-        <v-card-title class="headline">Card</v-card-title>
+        <v-card-title class="headline">{{area.area_nome}}</v-card-title>
         <v-img
           class="white--text align-end"
           height="300"
           width="400"
+          contain
+          :src="JSON.parse(area.payload_imgs).imgs[0]"
           >
         </v-img>
 
@@ -27,8 +29,8 @@
             <v-divider></v-divider>
 
             <v-card-text>
-              ""Informações de Latitude e Longitude""
-              GEOJEISO
+              Coordenadas:
+              {{JSON.parse(area.geojson)[0]}}
             </v-card-text>
           </div>
         </v-expand-transition>
