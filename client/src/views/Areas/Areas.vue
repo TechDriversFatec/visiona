@@ -13,12 +13,12 @@
       >
         <v-row>
           <v-col
-            v-for="item in arrayEpisodios"
-            :key="item.episodio"
+            v-for="area in arrayAreas"
+            :key="area.id_area"
             cols="4"
             md="3"
           >
-            <v-item v-if="item.episodio>0 && item.episodio <=12">
+            <v-item>
               <v-hover v-slot:default="{ hover }">
                 <v-card
                   outlined
@@ -29,24 +29,21 @@
                 >
                   <v-list-item>
                     <v-list-item-content>
-                      <v-list-item-title class="white--text headline">AREA {{formatarNum(item.episodio)}}</v-list-item-title>
+                      <v-list-item-title class="white--text headline">{{area.nome_area}}</v-list-item-title>
                       <v-list-item-subtitle class="grey--text">dd/mm/aaaa</v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
 
 
                   <v-img
-                    src="..\..\assets\Imagens_Remover\mapaicon.png"
+                    contain
+                    :src="JSON.parse(area.payload_imgs).imgs[0]"
                     max-height="120"
                     class="pa-7"
                   ></v-img>
 
                   <v-card-actions>
                     <Card></Card>
-                    <v-btn class="white--text" icon>
-                      <v-icon>mdi-flash</v-icon>
-                    </v-btn>
-
                   </v-card-actions>
                 </v-card>
               </v-hover>

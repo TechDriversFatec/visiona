@@ -5,7 +5,7 @@
       dark
       @click.stop="dialog = true"
     >
-      Card JSON
+      Detalhes
     </v-btn>
 
     <v-dialog
@@ -18,7 +18,7 @@
           class="white--text align-end"
           height="300"
           width="400"
-          src="..\..\assets\Imagens_Remover\mapa9.png">
+          >
         </v-img>
 
 
@@ -48,7 +48,6 @@
           <v-btn
             color="green darken-1"
             text
-
           >
             Ok
           </v-btn>

@@ -3,7 +3,11 @@ import MapboxGeocoder from "mapbox-gl-geocoder"
 import VueMapbox from "vue-mapbox";
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import Shpwrite from 'shp-write'
-import * as turf from '@turf/turf' 
+import * as turf from '@turf/turf'
+
+//Services
+import Processamento from '../../services/processamento'
+
 
 export default {
   components: {
@@ -73,7 +77,7 @@ export default {
       // Método para quando a seleção for criada
       map.on('draw.create', () => {
         var data = Draw.getAll();
-        this.poligono.geojson = JSON.stringify(data);
+        this.poligono.geojson = data
         
         //Calculando area em metros quadrados
         this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
@@ -86,11 +90,18 @@ export default {
       // Método para quando a seleção for atualizada
       map.on('draw.update', () => {
         var data = Draw.getAll();
-        this.poligono.geojson = JSON.stringify(data);
+        this.poligono.geojson = data
         
         //Calculando area em metros quadrados
         this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
         this.poligono.area_ha = this.poligono.area_m2 / 10000
+      })
+
+    },
+    processarPoligono(){
+      console.log(this.poligono)
+      Processamento.criarArea(this.poligono).then(resposta => {
+        console.log(resposta)
       })
 
     }

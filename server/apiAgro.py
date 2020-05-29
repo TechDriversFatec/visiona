@@ -13,7 +13,7 @@ API_KEYS = [
     'c2cf2c493f6dfbea8f0494145ef533c7',
     'd8e29198b9c07f25974fec6fdc00575f'
 ]
-API_ID = API_KEYS[1]
+API_ID = API_KEYS[2]
 owm = pyowm.OWM(API_ID)
 api = owm.agro_manager()
 
@@ -25,6 +25,7 @@ class Poligono:
         self.id = id
         self.userid = None
         self.poligono_obj = None
+        self.array_imagens = None
 
     def carregar(self):
         try:
@@ -45,6 +46,28 @@ class Poligono:
             self.id = poligono.id
             self.userid = poligono.user_id
             self.poligono_obj = poligono
+
+
+            url = "http://158.69.2.191:5500/add"
+
+            self.retornarLinkImagens('01/01/2019','01/01/2020')
+            
+           
+            payload = {
+                "geojson":self.geojson,
+                "name":self.nome,
+                "payload": {
+                    "imgs": self.array_imagens
+                },
+                "key": self.userid,
+                "hash":API_ID
+            }
+            
+            print(payload)
+            response = requests.request("POST", url, json=payload)
+
+            print(response.text)
+
             return 1
         except Exception as erro:
             print(str(erro))
@@ -105,7 +128,9 @@ class Poligono:
         for produto in data:
             if 'Sentinel-2' not in produto['type']:continue           
             array_produtos.append(produto['image']['truecolor'])
-        return array_produtos
+
+        self.array_imagens = array_produtos
+        return 1
 
     def baixarImagens(self,data_inicio,data_fim):
         
