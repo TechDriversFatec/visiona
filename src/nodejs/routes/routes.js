@@ -1,21 +1,19 @@
 const fs = require('fs');
 const path = require('path');
-const multer = require("multer");
 const conn = require('../connect.js');
-const indexMtds = require('../index.js');
 const query = require('../queries/queries.js');
 const VisionaDAO = require('../DAO/visionaDAO.js');
-const multerConfs = require('../multer/multer');
 const visionaDAO = new VisionaDAO();
 
 module.exports = {
-    getHomePage : async(req, res) => {
+    getAllAreas : async(req, res) => {
         try {
           let get_areas = await visionaDAO.GetAllAreas();
-          res.render('../public/views/index.ejs', {
-              title: 'Visiona Painel de Controle | View Areas',
-              areas: get_areas
-          });
+          res.status(200).json({
+            status: 1,
+            mensagem : "Sucesso!",
+            areas : get_areas
+          })
         } catch (e) {
           res.status(500);
           res.render('../public/views/errors.ejs', {
@@ -25,24 +23,32 @@ module.exports = {
         }
     },
 
-    addAreaRed : (req, res) => {
-      res.render('../public/views/addArea.ejs', {
-          title: 'Adicionar Areas',
-          message: ''
-      });
-    },
-
     addArea : async(req, res) => {
       let con = await conn();
-      const { geojson } = req.body;
-      let scriptAdd = query.insert_geojson.replace('?', geojson);
-
+      let {
+        geojson,
+        name,
+        payload,
+        key,
+        hash
+      } = req.body;
+      geojson = JSON.stringify(geojson);
+      payload = JSON.stringify(payload);
+      let scriptAdd = query.insert_data
+                                      .replace('p1', geojson)
+                                      .replace('p2', name)
+                                      .replace('p3', payload)
+                                      .replace('p4', key)
+                                      .replace('p5', hash);
       // execute query
       con.query(scriptAdd, (err, result) => {
           if (err) return res.status(500).send(err);
 
-          res.status(200);
-          res.redirect('/');
+          res.status(200).json({
+            status: 1,
+            mensagem : "Inserido com Sucesso!",
+            payload : payload
+          })
       });
     },
 
@@ -54,10 +60,11 @@ module.exports = {
       con.query(scriptEdit, (err, result) => {
         if(err) return res.status(500).send(err);
 
-        res.render('../public/views/editArea.ejs', {
-          title: 'Editar Areas',
-          area : result[0]
-        });
+        res.status(200).json({
+          status : 1,
+          mensagem : "Sucesso!",
+          result : result[0]
+        })
       });
     },
 
@@ -70,15 +77,11 @@ module.exports = {
         if (err) {
             return res.status(500).send(err);
         }else{
-          res.status(200);
-          res.redirect('/');
+          res.status(200).json({
+            status: 1,
+            mensagem : "Excluído com Sucesso!"
+          })
         }
-      });
-    },
-
-    redirectIMG : (req, res) => {
-      res.render('../public/views/files.ejs', {
-        title: 'Upload de Imagens'
       });
     },
 
