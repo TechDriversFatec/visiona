@@ -33,7 +33,7 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 ## Entregas (Videos e [Priorizações](https://drive.google.com/file/d/1HBAGodFF4nQXLZTeCOb1BIqBj2UKQeVP/view?usp=sharing))
 - [x]  Entrega 1 --> [Video Demonstrativo entrega 1](https://drive.google.com/open?id=11v4xIfAYC_t8zkmm5uXnqkraF5Oosq1n)
 - [x]  Entrega 2 --> [Video Demonstrativo entrega 2](https://drive.google.com/open?id=1qI51W90t1r8VAVSixZajOPehkBhtmiVV)
-- [x]  Entrega 3 --> [Video Demonstrativo entrega 3](https://drive.google.com/file/d/1EtVa0vAv6_mW9I1nv7PpDcCNHzj3264G/view?usp=sharing)
+- [x]  Entrega 3 --> [Video Demonstrativo entrega 3](https://drive.google.com/file/d/1su1_JO-INZhCrKuTwO0xIuDHuL-4v2br/view?usp=sharing)
 
     Entrega 3 - Assim que o usuário selecionar a sua área de interesse essa área irá para um
 catálogo com todos as outras áreas que o usuário selecionar e registrar podendo visualizar
