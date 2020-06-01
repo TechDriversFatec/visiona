@@ -1,9 +1,9 @@
 # Integrantes do Grupo 5
--   Gabriel Matos (Scrum Master)
--   José Elias (PO)
--   Enzo Gerola (Desenvolvedor Back-end)
 -   Douglas Souza (Desenvolvedor Fullstack)
+-   Enzo Gerola (Desenvolvedor Back-end)
+-   Gabriel Matos (Scrum Master)
 -   Henrique Alexandre (Desenvolvedor Front-end)
+-   José Elias (PO)
 
 # Visiona
 
