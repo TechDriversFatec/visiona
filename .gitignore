@@ -2,7 +2,14 @@
 server/__pycache__/
 
 server/area.json
+node_modules/
 
 *.zip
 
 server/treinamento/
+
+server/POLYGON.prj
+
+*.shx
+
+*.shp

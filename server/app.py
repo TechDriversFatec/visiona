@@ -3,7 +3,6 @@
 from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from flask_restplus import Api, Resource, fields
-from apiCopernicus import baixarArea
 from apiAgro import Poligono
 import json
 
@@ -11,7 +10,6 @@ import json
 app = Flask(__name__)
 app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
 blueprint = Blueprint('api', __name__, url_prefix='/api')
-CORS(app)
 api = Api(
     blueprint,
     doc='/doc/',
@@ -23,10 +21,11 @@ app.register_blueprint(blueprint)
 
 sentinel = api.namespace('sentinel', description='Rotas principais')
 area = api.namespace('area', description='Áreas')
+CORS(app)
 
 #MODELS
 
-modelGeoJSON = api.model('GeoJSON',{'geo_json': fields.Raw(required = True),'name': fields.String(required = True)})
+modelGeoJSON = api.model('GeoJSON',{'geojson': fields.Raw(required = True),'nome': fields.String(required = True)})
 modelArea = api.model('Area',{'id': fields.String(required = True),'nome': fields.String(required = True)})
 
 #PARSERS
@@ -37,6 +36,9 @@ parserExcluirArea.add_argument("id", location = "params",required=True ,help = "
 parserInfoArea = api.parser()
 parserInfoArea.add_argument("id", location = "params",required=True ,help = "ID do poligono")
 
+parserCarregarArea = api.parser()
+parserCarregarArea.add_argument("id", location = "params",required=True ,help = "ID do poligono")
+
 @sentinel.route('/status', methods=['GET'])
 class Status(Resource):
     def get(self):
@@ -46,12 +48,23 @@ class Status(Resource):
 class criarArea(Resource):
     @area.expect(modelGeoJSON)
     def post(self):
-        geo = area.payload['geo_json']['geometry']['coordinates']
+        print(area.payload)
+        geo = area.payload['geojson']['features'][0]['geometry']['coordinates']
 
-        nome = area.payload['name']
+        nome = area.payload['nome']
 
         poligono = Poligono(geo,nome,'')
         poligono.criar()
+
+        return {'id':poligono.id}
+
+@area.route('/carregar')
+class carregarArea(Resource):
+    @area.expect(parserCarregarArea)
+    def post(self):
+        id = request.args.get('id')
+        poligono = Poligono('','',id)
+        poligono.carregar()
         return {'id':poligono.id}
 
 @area.route('/excluir')
