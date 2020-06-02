@@ -7,12 +7,12 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
+    path: '/gis',
     name: 'Home',
     component: Home
   },
   {
-    path: '/areas',
+    path: '/poligonos',
     name: 'Areas',
     component: Areas
   }
