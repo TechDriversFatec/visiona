@@ -4,9 +4,8 @@
     padless
   >
     <v-card
-      flat
       tile
-      class="text-center"
+      class="white--text text-center" style="background-color: #000411"
     >
       <v-card-text>
         <v-btn
