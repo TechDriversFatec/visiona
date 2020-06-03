@@ -25,7 +25,7 @@
             <v-card class="elevation-12">
                 <!-- <v-toolbar-title>Login</v-toolbar-title> -->
                 <v-spacer></v-spacer>
-                <v-tooltip bottom>
+
                   <template v-slot:activator="{ on }">
                     <v-btn
                       :href="source"
@@ -36,7 +36,7 @@
                     >
                     </v-btn>
                   </template>
-                </v-tooltip>
+                
               <v-card-text>
                 <v-form>
                   <v-text-field

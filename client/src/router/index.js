@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home/Home.vue'
 import Areas from '../views/Areas/Areas.vue'
 import Login from '../views/Login/Login.vue'
+import Status from '../views/Status/Status.vue'
+import Processamento from '../views/Processamento/Processamento.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/status',
+    name: 'Status',
+    component: Status
+  },
+  {
+    path: '/processamento',
+    name: 'Processamento',
+    component: Processamento
   }
 ]
 
