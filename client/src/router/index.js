@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '.././store';
 import Home from '../views/Home/Home.vue'
 import Areas from '../views/Areas/Areas.vue'
 import Login from '../views/Login/Login.vue'
@@ -10,34 +11,72 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/gis',
+    path: '*',
+    redirect: '/login',
+  },
+  {
+    path: '/webgis',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      autenticado: true
+    }
   },
   {
     path: '/poligonos',
     name: 'Areas',
-    component: Areas
+    component: Areas,
+    meta: {
+      autenticado: true
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      autenticado: false
+    }
   },
   {
     path: '/status',
     name: 'Status',
-    component: Status
+    component: Status,
+    meta: {
+      autenticado: true
+    }
   },
   {
     path: '/processamento',
     name: 'Processamento',
-    component: Processamento
+    component: Processamento,
+    meta: {
+      autenticado: true
+    }
   }
 ]
-
 const router = new VueRouter({
-  routes
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: routes
 })
+
+router.beforeEach((to, from, next) => {
+  store.dispatch('fetchAccessToken');
+  if (to.fullPath === '/login'){
+    if (store.state.accessToken) {
+      next('/webgis');
+    }
+  }
+  if (to.meta.autenticado === true) {
+    if (!store.state.accessToken) {
+      next('/login');
+    } else {
+      next();
+    }
+  }
+
+  next();
+});
 
 export default router

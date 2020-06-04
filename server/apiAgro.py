@@ -63,11 +63,8 @@ class Poligono:
                 "hash":API_ID
             }
             
-            print(payload)
             response = requests.request("POST", url, json=payload)
-
-            print(response.text)
-
+            print(response)
             return 1
         except Exception as erro:
             print(str(erro))

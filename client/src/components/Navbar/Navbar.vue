@@ -8,7 +8,6 @@
       >
       </v-avatar>
       
-      <v-toolbar-title>Visiona</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-row

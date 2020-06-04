@@ -4,7 +4,7 @@ export default {
       arrayRoutes : [
         {
           'nome': 'WebGIS',
-          'route': 'gis'
+          'route': 'webgis'
         },
         {
           'nome': 'Poligonos',

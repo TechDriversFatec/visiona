@@ -1,10 +1,10 @@
 <template>
   <v-app style="background-color: #E1EFE6">
-    <Navbar></Navbar>
+    <Navbar v-if="$route.meta.autenticado"></Navbar>
     <v-content class="ma-4">
       <router-view></router-view>
     </v-content>
-    <Footer></Footer>
+    <Footer v-if="$route.meta.autenticado"></Footer>
   </v-app>
 </template>
 

@@ -3,6 +3,7 @@
 from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from flask_restplus import Api, Resource, fields
+from users import *
 from apiAgro import Poligono
 import json
 import jwt
@@ -11,10 +12,8 @@ import datetime
 import hashlib, binascii, os
 from functools import wraps
 
-
-
-
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'CHAVESECRETAFATEC2020PI6SEMGR5'
 app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
 blueprint = Blueprint('api', __name__, url_prefix='/api')
 api = Api(
@@ -33,27 +32,13 @@ CORS(app,supports_credentials=True)
 #AUTH
 
 def autenticarUsuario(email):
-    arquivo_query = 'QUERY_SELECT_USUARIOS.sql'
-
-    with open('SQLS/'+str(arquivo_query),'r') as sql:  
-        query = sql.read() 
-    sql.close()
-
-    query = query.replace('[email]',email)
-
-    user = executarQuerySelect(query,arquivo_query)
+    user = User()
+    user.carregarUsuario(email)
 
     if not user:
         return 0
 
     return user
-
-def gerarHashSenha(senha):
-    #Retorna a senha em hash
-    salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
-    pwdhash = hashlib.pbkdf2_hmac('sha512', senha.encode('utf-8'), salt, 100000)
-    pwdhash = binascii.hexlify(pwdhash)
-    return (salt + pwdhash).decode('ascii')
 
 def verificaSenha(hash_senha_banco, senha):
     #Verifica se a senha recebida é igual a senha do banco
@@ -99,7 +84,7 @@ def retornarUsuario(token):
 
 modelGeoJSON = api.model('GeoJSON',{'geojson': fields.Raw(required = True),'nome': fields.String(required = True)})
 modelArea = api.model('Area',{'id': fields.String(required = True),'nome': fields.String(required = True)})
-
+modelAuth = api.model('Autenticação',{'user': fields.String(),'password':fields.String()})
 #PARSERS
 
 parserExcluirArea = api.parser()
@@ -118,18 +103,18 @@ class Status(Resource):
 
 
 #Rota de autenticação
-@sentinel.route('/auth')
+@area.route('/auth')
 class Auth(Resource):
-    @sentinel.expect(modelAuth)
+    @area.expect(modelAuth)
     def post(self):
-        user = sentinel.payload['user']
+        user = area.payload['user']
 
         dados_usuario = autenticarUsuario(user)
 
         if not dados_usuario:
             return {'erro':'Usuario ou senha incorretos!'},401
 
-        if user and verificaSenha(dados_usuario[0][6],sentinel.payload['password']):
+        if user and verificaSenha(dados_usuario.password,area.payload['password']):
             token = jwt.encode({'user' : user, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=3600)}, app.config['SECRET_KEY'])
             return {'token' : token.decode('UTF-8')},200
 

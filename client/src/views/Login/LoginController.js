@@ -1,18 +1,23 @@
-// export default {
-//    props: {
-//      source: String,
-//    },
-//  }
+import Processamento from '../../services/processamento'
 
- // src/plugins/vuetify.js
+export default{
+  data() {
+    return {
+      login: {
+        user: null,
+        password: null
+      }
+    }
+  },
+  methods: {
+    auth(){
+      Processamento.autenticar(this.login).then(resposta => {
+        localStorage.setItem('accessToken', JSON.stringify(resposta.data.token))
+        if (resposta.data.token){
+          this.$router.push('/webgis')
 
- import Vue from 'vue'
- import Vuetify from 'vuetify/lib'
-
- Vue.use(Vuetify)
-
- export default new Vuetify({
-   theme: {
-     dark: true,
-   },
- })
+        } 
+      })
+    }
+  }
+}
