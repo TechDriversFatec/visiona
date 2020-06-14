@@ -13,7 +13,7 @@ API_KEYS = [
     'c2cf2c493f6dfbea8f0494145ef533c7',
     'd8e29198b9c07f25974fec6fdc00575f'
 ]
-API_ID = API_KEYS[2]
+API_ID = API_KEYS[3]
 owm = pyowm.OWM(API_ID)
 api = owm.agro_manager()
 
@@ -63,11 +63,8 @@ class Poligono:
                 "hash":API_ID
             }
             
-            print(payload)
             response = requests.request("POST", url, json=payload)
-
-            print(response.text)
-
+            print(response)
             return 1
         except Exception as erro:
             print(str(erro))

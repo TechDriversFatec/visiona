@@ -30,7 +30,7 @@
                   <v-list-item>
                     <v-list-item-content>
                       <v-list-item-title class="white--text headline">{{area.nome_area}}</v-list-item-title>
-                      <v-list-item-subtitle class="grey--text">dd/mm/aaaa</v-list-item-subtitle>
+                      <v-list-item-subtitle class="grey--text">{{JSON.parse(area.geojson)[0][0][0]}},{{JSON.parse(area.geojson)[0][0][1]}}</v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
 
@@ -43,7 +43,7 @@
                   ></v-img>
 
                   <v-card-actions>
-                    <Card></Card>
+                    <card :area="area"></card>
                   </v-card-actions>
                 </v-card>
               </v-hover>
@@ -57,7 +57,7 @@
   </v-container>
 </template>
 
-<script src="./PainelController.js"></script>
+<script src="./AreasController.js"></script>
 
 <style scoped>
 

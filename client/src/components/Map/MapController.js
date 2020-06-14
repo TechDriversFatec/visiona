@@ -2,7 +2,7 @@ import Mapbox from "mapbox-gl";
 import MapboxGeocoder from "mapbox-gl-geocoder"
 import VueMapbox from "vue-mapbox";
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
-import Shpwrite from 'shp-write'
+// import Shpwrite from 'shp-write'
 import * as turf from '@turf/turf'
 
 //Services
@@ -84,7 +84,7 @@ export default {
         this.poligono.area_ha = this.poligono.area_m2 / 10000
         
         //Criando a shapefile
-        Shpwrite.download(data)
+        // Shpwrite.download(data)
       })
 
       // Método para quando a seleção for atualizada
@@ -102,6 +102,7 @@ export default {
       console.log(this.poligono)
       Processamento.criarArea(this.poligono).then(resposta => {
         console.log(resposta)
+        this.$router.push('/areas')
       })
 
     }

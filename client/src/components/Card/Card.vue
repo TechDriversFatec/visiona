@@ -13,22 +13,35 @@
       max-width="600"
     >
       <v-card dark>
-        <v-card-title class="headline">Card</v-card-title>
-        <v-img
-          class="white--text align-end"
-          height="300"
-          width="400"
+        <v-card-title class="headline">{{area.area_nome}}</v-card-title>
+        <v-carousel
+          cycle
+          height="400"
+          hide-delimiter-background
+          show-arrows-on-hover
+        >
+          <v-carousel-item
+            v-for="(img, i) in JSON.parse(area.payload_imgs).imgs"
+            :key="i"
           >
-        </v-img>
-
+            <v-img
+              class="white--text align-end"
+              height="300"
+              width="400"
+              contain
+              :src="img"
+              >
+            </v-img>
+          </v-carousel-item>
+        </v-carousel>
 
         <v-expand-transition>
           <div v-show="show">
             <v-divider></v-divider>
 
             <v-card-text>
-              ""Informações de Latitude e Longitude""
-              GEOJEISO
+              Coordenadas:
+              {{JSON.parse(area.geojson)[0]}}
             </v-card-text>
           </div>
         </v-expand-transition>
