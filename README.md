@@ -45,7 +45,7 @@ essas áreas e sua informações e também podendo baixar uma imagem da área.
     
     Entrega 4 - Desenvolvemos uma IA que como requisitado pela empresa é capaz de reconhecer os talhões selecionados nas áreas da imagem, essa feature é um passo muito grande para o projeto pois ele é o ponto principal da aplicação que irá fazer toda analise em cima das regiões selecionadas.
     
-    O arquivo em python no google colab se encontra [**AQUI**](https://colab.research.google.com/drive/1S3tCy98YhN0T_iX4tkdnIJfvkIAtYxbV?usp=sharing).
+    O arquivo no google colab se encontra [**AQUI**](https://colab.research.google.com/drive/1S3tCy98YhN0T_iX4tkdnIJfvkIAtYxbV?usp=sharing).
 
 ## Fluxograma
 - ![Fluxograma](./docs/Fluxograma.png)
