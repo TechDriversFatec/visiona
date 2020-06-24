@@ -78,7 +78,7 @@ def carregarProdutos():
         rgb.write(b3.read(1),2) 
         rgb.write(b4.read(1),3) 
         rgb.close()
-
+    return 1
     mascara = shapefile.to_crs({'init': 'epsg:32633'})
 
     with rasterio.open("RGB.tiff") as src:
