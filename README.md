@@ -1,3 +1,6 @@
+[![Python](https://img.shields.io/badge/python-v3.6-<COLOR>.svg)](https://shields.io/)
+[![Flask](https://img.shields.io/badge/flask-v1.1.1-red.svg)](https://shields.io/)
+
 # Integrantes do Grupo 5
 -   Douglas Souza (Desenvolvedor Fullstack)
 -   Enzo Gerola (Desenvolvedor Back-end)
