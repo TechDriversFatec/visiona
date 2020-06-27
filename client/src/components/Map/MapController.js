@@ -41,8 +41,22 @@ export default {
         center: [-45.7958296,-23.1623703], // posição inicial
         zoom: 12, // zoom default
       },
+
+      dates: ['2019-09-10', '2019-09-20'],
+
+      computed: {
+        dateRangeText () {
+          return this.dates.join(' ~ ')
+        },
+      },
+
+      dialog: false,
+
+      items: ['Sentinel', 'Landsat'],
     }
   },
+
+
   methods: {
     initMap(){
       var map = new Mapbox.Map({

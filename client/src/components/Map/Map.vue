@@ -4,7 +4,7 @@
     <div id="mapbox" class="mapbox"></div>
 
     
-    <v-card align="center" width="24%" class="white--text" style="background-color: #7685a7">
+    <v-card align="center" width="24%" class="white--text" style="background-color: #23221e">
       <v-card-title>Informações</v-card-title>
       <v-card-text>
         <v-form v-model="form">
@@ -48,40 +48,44 @@
           thumb-label
         ></v-slider>
       </v-col>
-       <v-col cols="12" class="pt-0">
-          <v-subheader class="pl-4 white--text">Satélites:</v-subheader>
-          <v-radio-group class="pt-0">
-            <v-radio value="sentinel" label="Sentinel"></v-radio>
-            <v-radio value="landsat" label="Landsat"></v-radio>
-          </v-radio-group>
-        </v-col>
 
-          <v-col class="pt-0 pb-0">
-      <v-menu
-        ref="menu"
-        v-model="menu"
-        :close-on-content-click="false"
-        :return-value.sync="date"
-        transition="scale-transition"
-        offset-y
-        min-width="290px"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-text-field
-            v-model="date"
-            label="Select Date"
-            readonly
-            v-bind="attrs"
-            v-on="on"
-          ></v-text-field>
-        </template>
-        <v-date-picker v-model="date" no-title scrollable>
-          <v-spacer></v-spacer>
-          <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-          <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
-        </v-date-picker>
-      </v-menu>
+  <v-col class="d-flex" cols="12">
+        <v-select
+          :items="items"
+          label="Selecionar Satélite"
+          dense
+          solo
+        ></v-select>
+      </v-col>
+
+            <v-row justify="center">
+    <v-dialog v-model="dialog" persistent max-width="700px">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on">
+          Selecionar Periodo
+        </v-btn>
+      </template>
+      <v-card>
+    <v-row>
+    <v-col cols="12" sm="6">
+      <v-date-picker class="ml-5" v-model="dates" range></v-date-picker>
     </v-col>
+    <v-col cols="12" sm="6">
+      <v-text-field class="mr-5" v-model="dateRangeText" label="Date range" readonly></v-text-field>
+      model: {{ dates }}
+    </v-col>
+  </v-row> 
+  <v-card-actions>
+    <v-spacer></v-spacer>
+          <v-btn class="mr-5" color="blue darken-1" text @click="dialog = false">Ok</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
 
  
         </v-form>
@@ -97,17 +101,7 @@
     </v-row>
   </div>
 </template>
-<script src="./MapController.js">
-
-  export default {
-    data () {
-      return {
-        picker: new Date().toISOString().substr(0, 10),
-      }
-    },
-  }
-
-</script>
+<script src="./MapController.js"></script>
 
 <style scoped>
   .mapbox{
