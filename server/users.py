@@ -1,6 +1,6 @@
 import requests
 import hashlib, binascii, os
-BASE_URL = 'http://158.69.2.191:5500/'
+BASE_URL = 'http://localhost:3333/api/v1/'
 class User:
     def __init__(self):
         self.id = None 
@@ -9,13 +9,13 @@ class User:
         self.password = None
 
     def criarUsuario(self,nome,email,password):
-        url = BASE_URL + "createUser"
+        url = BASE_URL + "users"
     
         
         data = {
             "nome": nome,
             "email":email,
-            "password":password
+            "hash":password
         }
         
         response = requests.request("POST", url, json=data)
