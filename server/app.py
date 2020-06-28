@@ -12,6 +12,12 @@ import datetime
 import hashlib, binascii, os
 from functools import wraps
 
+# Processamento de imagens
+import cv2
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'CHAVESECRETAFATEC2020PI6SEMGR5'
 app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
@@ -203,7 +209,27 @@ class infoAreaSolo(Resource):
             print(str(erro))
             return 'Área não existe!',200
 
+@app.route('/processimg', methods=['POST'])
+def processImg():
+    if request.files:
+        arq = request.files["image"]
+        # read the image
+        image = cv2.imread(arq.filename)
+        try:
+            # convert it to grayscale
+            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+            # perform the canny edge detector to detect image edges
+            edges = cv2.Canny(gray, threshold1=30, threshold2=100)
+
+            # show the detected edges
+            plt.imshow(edges, cmap="gray")
+            plt.savefig(random.choice(arq.filename))
+            return { "status" : 1, "mensagem" : "Processado com sucesso!" }
+        except Exception as err:
+            return { "status" : 0, "mensagem" : "Erro ao processar imagem" }
+    else:
+        return { "status" : 0, "mensagem" : "Adicione um arquivo a ser enviado!" }
 
 if __name__ == '__main__':
     app.config['JSON_AS_ASCII'] = False
