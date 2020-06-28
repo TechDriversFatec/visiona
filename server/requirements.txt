@@ -8,3 +8,6 @@ geopandas==0.7.0
 shapely==1.7.0
 sridentify==0.8.0
 PyJWT==1.7.1
+opencv-python
+numpy
+matplotlib
