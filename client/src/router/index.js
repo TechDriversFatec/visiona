@@ -19,7 +19,7 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home,
     meta: {
-      autenticado: true
+      autenticado: false
     }
   },
   {
@@ -27,7 +27,7 @@ Vue.use(VueRouter)
     name: 'Areas',
     component: Areas,
     meta: {
-      autenticado: true
+      autenticado: false
     }
   },
   {
@@ -43,7 +43,7 @@ Vue.use(VueRouter)
     name: 'Status',
     component: Status,
     meta: {
-      autenticado: true
+      autenticado: false
     }
   },
   {
@@ -51,7 +51,7 @@ Vue.use(VueRouter)
     name: 'Processamento',
     component: Processamento,
     meta: {
-      autenticado: true
+      autenticado: false
     }
   }
 ]

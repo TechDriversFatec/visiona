@@ -11,7 +11,8 @@ API_KEYS = [
     '672d11784a3e70a0ac49c576f3c3d069',
     'cb32f6df01ff0567b92ead6813e10c9d',
     'c2cf2c493f6dfbea8f0494145ef533c7',
-    'd8e29198b9c07f25974fec6fdc00575f'
+    'd8e29198b9c07f25974fec6fdc00575f',
+    'd2a7159180c3df286499108f11730658'
 ]
 API_ID = API_KEYS[3]
 owm = pyowm.OWM(API_ID)
