@@ -222,14 +222,12 @@ class processarImagem(Resource):
             url = area.payload["url"]
 
             resp = urllib.request.urlopen(url)
-            imagem = np.asarray(bytearray(resp.read()), dtype="uint8")
-            print(imagem)
-            imagem = cv2.imdecode(imagem, cv2.IMREAD_COLOR)
-
+            imagem_array = np.asarray(bytearray(resp.read()), dtype="uint8")
+            imagem = cv2.imdecode(imagem_array, -1)
 
             # arq = request.files["image"]
             # read the image
-            image = cv2.imread(imagem)
+            image = cv2.imread(imagem, cv2.IMREAD_UNCHANGED)
             try:
                 # convert it to grayscale
                 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

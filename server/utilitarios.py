@@ -17,4 +17,28 @@ def baixarImagemTalhao(url):
 
     return response.cookies
 
-baixarImagemTalhao('https://sentinel-s2-l1c.s3.amazonaws.com/tiles/12/S/WJ/2020/6/21/0/TKI.jp2')
+def baixarImagemPNG(url):
+    response = requests.get(url=url, stream=True)
+
+    nome_arq = './imagem_processada.png'
+
+    local_file = open(nome_arq, 'wb')
+
+    response.raw.decode_content = True
+
+    shutil.copyfileobj(response.raw, local_file)
+
+    return nome_arq
+
+def baixarImagemJPG(url):
+    response = requests.get(url=url, stream=True)
+
+    nome_arq = './imagem_processada.jpg'
+
+    local_file = open(nome_arq, 'wb')
+
+    response.raw.decode_content = True
+
+    shutil.copyfileobj(response.raw, local_file)
+
+    return nome_arq
