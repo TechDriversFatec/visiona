@@ -70,13 +70,17 @@
           </v-col>
         </v-form>
       </v-card-text>
-      <v-btn
-        class="white--text"
-        style="background-color: #006064;"
-        :disabled="!form"
-        @click="criarArea()"
-        >Processar área
-      </v-btn>
+      <v-card-actions>
+        <v-row justify="center">
+          <v-btn
+            class="white--text"
+            style="background-color: #006064;"
+            :disabled="!form"
+            @click="criarArea()"
+            >Processar área
+          </v-btn>
+        </v-row>
+      </v-card-actions>
     </v-card>
     </v-row>
   </div>
