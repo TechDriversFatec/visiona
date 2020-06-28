@@ -8,96 +8,76 @@
       <v-card-title>Informações</v-card-title>
       <v-card-text>
         <v-form v-model="form">
+          <!-- Nome da area -->
           <v-text-field
             background-color="#e1efe6"
             placeholder="Nome"
-            v-model="poligono.nome"
+            v-model="area.title"
             outlined
+            :rules = "[rules.nome]"
             color="black"
           ></v-text-field>
+          <!-- GEOJSON -->
           <v-textarea
             background-color="#e1efe6"
             placeholder="GEOJson"
             readonly
-            :value="JSON.stringify(poligono.geojson)"
+            :value="JSON.stringify(area.geojson)"
             auto-grow
             outlined
             row-height="5"
           ></v-textarea>
-          <v-text-field
-            background-color="#e1efe6"
-            placeholder="Area (m²)"
-            readonly
-            :value="poligono.area_m2"
-            :rules = "[rules.area_m2]"
-            outlined
-          ></v-text-field>
+          <!-- Area em hectares -->
           <v-text-field
             color="black"
             background-color="#e1efe6"
             placeholder="Area (ha)"
             readonly
-            :value="poligono.area_ha"
+            :value="area.ha"
             :rules = "[rules.area_ha]"
             outlined
           ></v-text-field>
           <v-col cols="12" class="pb-0 pt-0">
-        <v-subheader class="pl-4 white--text">Porcentagem de Nuvem:</v-subheader>
-        <v-slider
-          v-model="slider"
-          thumb-label
-        ></v-slider>
-      </v-col>
-
-  <v-col class="d-flex" cols="12">
-        <v-select
-          :items="items"
-          label="Selecionar Satélite"
-          dense
-          solo
-        ></v-select>
-      </v-col>
-
-            <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="700px">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on">
-          Selecionar Periodo
-        </v-btn>
-      </template>
-      <v-card>
-    <v-row>
-    <v-col cols="12" sm="6">
-      <v-date-picker class="ml-5" v-model="dates" range></v-date-picker>
-    </v-col>
-    <v-col cols="12" sm="6">
-      <v-text-field class="mr-5" v-model="dateRangeText" label="Date range" readonly></v-text-field>
-      model: {{ dates }}
-    </v-col>
-  </v-row> 
-  <v-card-actions>
-    <v-spacer></v-spacer>
-          <v-btn class="mr-5" color="blue darken-1" text @click="dialog = false">Ok</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </v-row>
-
- 
+          <!-- Slider de porcentagem de nuvens -->
+          <v-spacer></v-spacer>
+          <h4 class="pl-4 white--text">Porcentagem de Nuvem: {{area.cloudiness}}</h4>
+          <v-slider
+            v-model="area.cloudiness"
+            thumb-label
+            color="#006064"
+          ></v-slider>
+          <!-- Model de selecionar periodo -->
+          <h4 class="pl-4 white--text">Periodo das imagens: {{area.period}}</h4>
+          <v-row justify="center">
+            <v-date-picker 
+              v-model="area.period"
+              range
+              color="#006064"
+            >
+            </v-date-picker>
+          </v-row>
+          </v-col>
+          <!-- Select de Satelites -->
+          <v-col class="d-flex" cols="12">
+            <v-select
+              :items="arraySatelites"
+              label="Selecionar Satélite"
+              dense
+              v-model="area.satellite"
+              :value="arraySatelites[0]"
+              solo
+            ></v-select>
+          </v-col>
         </v-form>
-        </v-card-text>
+      </v-card-text>
       <v-btn
-      class="black--text"
-      style="background-color: #EFCB68;"
-      :disabled="!form"
-      @click="processarPoligono()"
-      >Processar poligono</v-btn>
+        class="white--text"
+        style="background-color: #006064;"
+        :disabled="!form"
+        @click="criarArea()"
+        >Processar área
+      </v-btn>
     </v-card>
-
     </v-row>
   </div>
 </template>

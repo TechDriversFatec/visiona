@@ -7,8 +7,8 @@ export default {
           'route': 'webgis'
         },
         {
-          'nome': 'Poligonos',
-          'route': 'poligonos'
+          'nome': 'Areas',
+          'route': 'areas'
         },
         {
           'nome': 'Processamento',

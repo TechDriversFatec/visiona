@@ -2,12 +2,14 @@ import Mapbox from "mapbox-gl";
 import MapboxGeocoder from "mapbox-gl-geocoder"
 import VueMapbox from "vue-mapbox";
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
-import Shpwrite from 'shp-write'
+// import Shpwrite from 'shp-write'
 import * as turf from '@turf/turf'
 
 //Services
-import Processamento from '../../services/processamento'
-
+// import Processamento from '../../services/processamento'
+import Areas from '../../services/areas'
+import Imgur from '../../services/uploadImage'
+import router from "../../router";
 
 export default {
   components: {
@@ -17,42 +19,34 @@ export default {
   },
   data() {
     return {
+      arraySatelites: ['Sentinel', 'Landsat'], //Satelites disponiveis
+      area: {
+        title: '',
+        satellite: 'Sentinel', //Satelite padrão
+        period: ['2020-01-01','2020-01-31'], //Mês de janeiro de 2020 como padrão
+        cloudiness: 50, //Padrão 50%
+        geojson: null,
+        m2: null,
+        ha: null,
+      },
       obj : {},
       geojson:null,
       geo_area:null,
       form: false,
-      poligono: {
-        geojson: null,
-        area_m2: null,
-        area_ha: null,
-        nome: null,
-      },
+      buf: null,
 
       rules: {
-        area_m2: v => v < 30000000 || 'Tamanho do poligono não pode exceder 30 milhoẽs de m²',
         area_ha: v => v < 3000 || 'Tamanho do poligono não pode exceder 3000 hectares',
-        nome: v => v != null || 'Nome da área não pode ficar em branco!'
+        nome: v => v != '' || 'Nome da área não pode ficar em branco!'
       },
-
 
       map: {
         accessToken: 'pk.eyJ1IjoiZW56b2dlcm9sYSIsImEiOiJjanZlMnoxamUwOWg0NDNwMW00Z2s2OHVsIn0.pMtAJJpUbQgRGnKRpgmpRw',
         mapStyle: 'mapbox://styles/mapbox/satellite-streets-v11',
         center: [-45.7958296,-23.1623703], // posição inicial
         zoom: 12, // zoom default
-      },
+      }
 
-      dates: ['2019-09-10', '2019-09-20'],
-
-      computed: {
-        dateRangeText () {
-          return this.dates.join(' ~ ')
-        },
-      },
-
-      dialog: false,
-
-      items: ['Sentinel', 'Landsat'],
     }
   },
 
@@ -91,34 +85,41 @@ export default {
       // Método para quando a seleção for criada
       map.on('draw.create', () => {
         var data = Draw.getAll();
-        this.poligono.geojson = data
+        this.area.geojson = data
         
         //Calculando area em metros quadrados
-        this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
-        this.poligono.area_ha = this.poligono.area_m2 / 10000
+        this.area.m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
+        this.area.ha = (this.area.m2 / 10000).toFixed(2)
         
-        //Criando a shapefile
-        Shpwrite.download(data)
+        this.buf = Buffer.from(map.getCanvas().toDataURL('image/png', 1.0), 'base64'); // Criando arquivo binario com base64
+        console.log(this.filePath)
+        
+        //Baixando a shapefile
+        // Shpwrite.download(data)
       })
-
+      
       // Método para quando a seleção for atualizada
       map.on('draw.update', () => {
         var data = Draw.getAll();
-        this.poligono.geojson = data
+        this.area.geojson = data
         
         //Calculando area em metros quadrados
-        this.poligono.area_m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
-        this.poligono.area_ha = this.poligono.area_m2 / 10000
+        this.area.m2 = turf.area(turf.polygon(data.features[0].geometry.coordinates));
+        this.area.ha = (this.area.m2 / 10000).toFixed(2)
+        this.buf = Buffer.from(map.getCanvas().toDataURL('image/png', 1.0), 'base64'); // Criando arquivo binario com base64
       })
-
+      
     },
-    processarPoligono(){
-      console.log(this.poligono)
-      Processamento.criarArea(this.poligono).then(resposta => {
+    criarArea(){
+      Areas.adicionarArea(this.area).then(resposta => {
         console.log(resposta)
-        this.$router.push('/poligonos')
+        router.push('/areas')
       })
-
+    },
+    teste(){
+      Imgur.uploadImagem(this.buf).then(resposta => {
+        console.log(resposta)
+      })
     }
   },
   mounted(){

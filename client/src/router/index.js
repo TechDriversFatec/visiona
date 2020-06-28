@@ -19,15 +19,15 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home,
     meta: {
-      autenticado: false
+      autenticado: true
     }
   },
   {
-    path: '/poligonos',
+    path: '/areas',
     name: 'Areas',
     component: Areas,
     meta: {
-      autenticado: false
+      autenticado: true
     }
   },
   {
@@ -43,7 +43,7 @@ Vue.use(VueRouter)
     name: 'Status',
     component: Status,
     meta: {
-      autenticado: false
+      autenticado: true
     }
   },
   {
@@ -51,7 +51,7 @@ Vue.use(VueRouter)
     name: 'Processamento',
     component: Processamento,
     meta: {
-      autenticado: false
+      autenticado: true
     }
   }
 ]

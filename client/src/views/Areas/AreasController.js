@@ -11,29 +11,22 @@ export default {
       return {
         arrayAreas: [],
         link : '',
+        pagina: 1,
+        total_paginas: null,
       }
     },
     mounted () {
-
-      // if (localStorage.getItem('data')){
-      //   this.arrayAreas = JSON.parse(localStorage.getItem('data'));
-      //   console.log(this.arrayAreas)
-      // } else {
-        Areas.retornarAreas().then(resposta =>{
-          this.arrayAreas = resposta.data.areas;
-          localStorage.setItem('data', JSON.stringify(resposta.data))
-          console.log(this.arrayAreas)
-        })
-      // }
+      Areas.retornarAreas(this.pagina).then(resposta =>{
+        this.arrayAreas = resposta.data.areas;
+        this.total_paginas = resposta.data.pages
+        console.log(resposta)
+      })
     },
     methods: {
-      formatarNum(num){
-        num = ("00" + num.toString()).slice(-3);
-        return num
-      },
-      chamarPlayer(num){
-        this.link = '/episodio/'+num.toString()
-        this.$router.push(this.link)
+      atualizarLista(){
+        Areas.retornarAreas(this.pagina).then(resposta =>{
+          this.arrayAreas = resposta.data.areas;
+        })
       }
     },
   }
