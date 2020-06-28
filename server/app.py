@@ -13,6 +13,7 @@ import hashlib, binascii, os
 from functools import wraps
 
 # Processamento de imagens
+import urllib.request
 import cv2
 import random
 import numpy as np
@@ -91,6 +92,7 @@ def retornarUsuario(token):
 modelGeoJSON = api.model('GeoJSON',{'geojson': fields.Raw(required = True),'nome': fields.String(required = True)})
 modelArea = api.model('Area',{'id': fields.String(required = True),'nome': fields.String(required = True)})
 modelAuth = api.model('Autenticação',{'user': fields.String(),'password':fields.String()})
+modelProc = api.model('Processamento',{'url': fields.String()})
 #PARSERS
 
 parserExcluirArea = api.parser()
@@ -101,6 +103,8 @@ parserInfoArea.add_argument("id", location = "params",required=True ,help = "ID 
 
 parserCarregarArea = api.parser()
 parserCarregarArea.add_argument("id", location = "params",required=True ,help = "ID do poligono")
+
+
 
 @sentinel.route('/status', methods=['GET'])
 class Status(Resource):
@@ -209,27 +213,38 @@ class infoAreaSolo(Resource):
             print(str(erro))
             return 'Área não existe!',200
 
-@app.route('/processimg', methods=['POST'])
-def processImg():
-    if request.files:
-        arq = request.files["image"]
-        # read the image
-        image = cv2.imread(arq.filename)
-        try:
-            # convert it to grayscale
-            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+@area.route('/processimg', methods=['POST'])
+class processarImagem(Resource):
+    @area.expect(modelProc)
+    def post(self):
+        if area.payload:
+            print(area.payload)
+            url = area.payload["url"]
 
-            # perform the canny edge detector to detect image edges
-            edges = cv2.Canny(gray, threshold1=30, threshold2=100)
+            resp = urllib.request.urlopen(url)
+            imagem = np.asarray(bytearray(resp.read()), dtype="uint8")
+            print(imagem)
+            imagem = cv2.imdecode(imagem, cv2.IMREAD_COLOR)
 
-            # show the detected edges
-            plt.imshow(edges, cmap="gray")
-            plt.savefig(random.choice(arq.filename))
-            return { "status" : 1, "mensagem" : "Processado com sucesso!" }
-        except Exception as err:
-            return { "status" : 0, "mensagem" : "Erro ao processar imagem" }
-    else:
-        return { "status" : 0, "mensagem" : "Adicione um arquivo a ser enviado!" }
+
+            # arq = request.files["image"]
+            # read the image
+            image = cv2.imread(imagem)
+            try:
+                # convert it to grayscale
+                gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+                # perform the canny edge detector to detect image edges
+                edges = cv2.Canny(gray, threshold1=30, threshold2=100)
+
+                # show the detected edges
+                plt.imshow(edges, cmap="gray")
+                plt.savefig(random.choice('fodase.png'))
+                return { "status" : 1, "mensagem" : "Processado com sucesso!" }
+            except Exception as err:
+                return { "status" : 0, "mensagem" : "Erro ao processar imagem" }
+        else:
+            return { "status" : 0, "mensagem" : "Adicione um arquivo a ser enviado!" }
 
 if __name__ == '__main__':
     app.config['JSON_AS_ASCII'] = False
