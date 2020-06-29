@@ -51,6 +51,7 @@ essas áreas e sua informações e também podendo baixar uma imagem da área.
     O arquivo no google colab se encontra [**AQUI**](https://colab.research.google.com/drive/1S3tCy98YhN0T_iX4tkdnIJfvkIAtYxbV?usp=sharing).
 
 - [x]  Entrega 5 --> [Video Demonstrativo Entrega 5]()
+
     Nessa etapa do projeto nós adicionamos os requisitos de busca definidos pela empresa
 para que assim a precisão de analise seja maior, juntamente com isso a equipe integrou a IA
 como um serviço fazendo com que a analise gerada pela IA seja retornada para o usuário ver e
