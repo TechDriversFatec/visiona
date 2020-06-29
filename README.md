@@ -35,7 +35,7 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 -   [Matriz Raci](https://docs.google.com/spreadsheets/d/14LjCpRv72gBPqyzKASprroXeiO-9xncovccf3pB6K68/edit?usp=sharing)
 -   [Checklist](https://drive.google.com/file/d/1Q0unTLsmw0O0yL8bstLIBgG-QSFGaqo6/view?usp=sharing)
 
-## Entregas (Videos e [Priorizações](https://drive.google.com/file/d/1HBAGodFF4nQXLZTeCOb1BIqBj2UKQeVP/view?usp=sharing))
+## Entregas (Videos e [Priorizações](https://drive.google.com/file/d/1bWyWYEwtM5XWlK2GdvbMZuyKPnk8QsIH/view?usp=sharing))
 - [x]  Entrega 1 --> [Video Demonstrativo entrega 1](https://drive.google.com/open?id=11v4xIfAYC_t8zkmm5uXnqkraF5Oosq1n)
 - [x]  Entrega 2 --> [Video Demonstrativo entrega 2](https://drive.google.com/open?id=1qI51W90t1r8VAVSixZajOPehkBhtmiVV)
 - [x]  Entrega 3 --> [Video Demonstrativo entrega 3](https://drive.google.com/file/d/1su1_JO-INZhCrKuTwO0xIuDHuL-4v2br/view?usp=sharing)
@@ -49,6 +49,12 @@ essas áreas e sua informações e também podendo baixar uma imagem da área.
     Entrega 4 - Desenvolvemos uma IA que como requisitado pela empresa é capaz de reconhecer os talhões selecionados nas áreas da imagem, essa feature é um passo muito grande para o projeto pois ele é o ponto principal da aplicação que irá fazer toda analise em cima das regiões selecionadas.
     
     O arquivo no google colab se encontra [**AQUI**](https://colab.research.google.com/drive/1S3tCy98YhN0T_iX4tkdnIJfvkIAtYxbV?usp=sharing).
+
+- [x]  Entrega 5 --> [Video Demonstrativo Entrega 5]()
+    Nessa etapa do projeto nós adicionamos os requisitos de busca definidos pela empresa
+para que assim a precisão de analise seja maior, juntamente com isso a equipe integrou a IA
+como um serviço fazendo com que a analise gerada pela IA seja retornada para o usuário ver e
+analisar se ele está de acordo com a análise ou não.
 
 ## Fluxograma
 - ![Fluxograma](./docs/Fluxograma.png)
