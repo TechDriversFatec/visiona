@@ -16,22 +16,35 @@
         sm="8"
         md="4"
       >
-        <v-card class="elevation-12">
+        <v-card class="elevation-7 mx-auto">
+
+            <v-spacer></v-spacer>
+
+        </v-card>
+        <v-card class="elevation-12 mx-auto">
             <v-spacer></v-spacer>
           <v-card-text>
             <v-form>
               <v-text-field
+                label="Nome de Usuário"
+                v-model="account.username"
+                name="username"
+                prepend-icon="mdi-account"
+                type="text"
+              ></v-text-field>
+
+              <v-text-field
                 label="Email"
-                v-model="login.email"
+                v-model="account.email"
                 name="login"
                 prepend-icon="mdi-at"
-                type="text"
+                type="email"
               ></v-text-field>
 
               <v-text-field
                 id="password"
                 label="Senha"
-                v-model="login.password"
+                v-model="account.password"
                 name="password"
                 prepend-icon="mdi-lock"
                 type="password"
@@ -41,18 +54,9 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
-
-              @click="auth()"
-              class="primary"
-              :loading="loading"
-            >
-            Login
-            </v-btn>
-            <v-btn
-
-              @click="create()"
-              class="link"
-              :loading="loading"
+            @click="create()"
+            class="primary"
+            :loading="loading"
             >
             Cadastrar
             </v-btn>
@@ -66,4 +70,4 @@
 
 </template>
 
-<script src="./LoginController.js"></script>
+<script src="./SigninController.js"></script>

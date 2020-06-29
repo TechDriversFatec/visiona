@@ -4,6 +4,7 @@ import store from '.././store';
 import Home from '../views/Home/Home.vue'
 import Areas from '../views/Areas/Areas.vue'
 import Login from '../views/Login/Login.vue'
+import Signin from '../views/Signin/Signin.vue'
 import Status from '../views/Status/Status.vue'
 import Processamento from '../views/Processamento/Processamento.vue'
 
@@ -34,6 +35,14 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     component: Login,
+    meta: {
+      autenticado: false
+    }
+  },
+  {
+    path: '/signin',
+    name: 'Signin',
+    component: Signin,
     meta: {
       autenticado: false
     }
