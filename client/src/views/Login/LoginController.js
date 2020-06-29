@@ -1,4 +1,5 @@
 import User from '../../services/users'
+import router from "../../router";
 
 export default{
   data() {
@@ -11,6 +12,9 @@ export default{
     }
   },
   methods: {
+    onClickOutside () {
+        this.active = false
+      },
     auth(){
       this.loading = true
       User.autenticar(this.login).then(resposta => {
@@ -20,8 +24,12 @@ export default{
         this.loading = false
         if (resposta.data.token){
           this.$router.push('/webgis')
-        } 
+        }
       })
+    },
+    create(){
+          this.loading = false
+          router.push('/signin')
     }
   }
 }

@@ -24,7 +24,7 @@
                 label="Email"
                 v-model="login.email"
                 name="login"
-                prepend-icon="mdi-account"
+                prepend-icon="mdi-at"
                 type="text"
               ></v-text-field>
 
@@ -40,12 +40,21 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn 
-              @click="auth()" 
-              class="primary"  
+            <v-btn
+
+              @click="auth()"
+              class="primary"
               :loading="loading"
             >
             Login
+            </v-btn>
+            <v-btn
+
+              @click="create()"
+              class="link"
+              :loading="loading"
+            >
+            Cadastrar
             </v-btn>
           </v-card-actions>
         </v-card>
