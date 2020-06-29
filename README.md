@@ -50,7 +50,7 @@ essas áreas e sua informações e também podendo baixar uma imagem da área.
     
     O arquivo no google colab se encontra [**AQUI**](https://colab.research.google.com/drive/1S3tCy98YhN0T_iX4tkdnIJfvkIAtYxbV?usp=sharing).
 
-- [x]  Entrega 5 --> [Video Demonstrativo Entrega 5]()
+- [x]  Entrega 5 --> [Video Demonstrativo Entrega 5](https://drive.google.com/drive/folders/1i5DTburScV7rxmNE8l2hBS-ri6yqtWz2?usp=sharing)
 
     Nessa etapa do projeto nós adicionamos os requisitos de busca definidos pela empresa
 para que assim a precisão de analise seja maior, juntamente com isso a equipe integrou a IA
