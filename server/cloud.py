@@ -12,5 +12,5 @@ def uploadImg(file):
     upload_data = cloudinary.uploader.upload(file)
     return {
         'status': 1,
-        'data': upload_data.data.secure_url,
+        'url': upload_data.data.secure_url,
     }
