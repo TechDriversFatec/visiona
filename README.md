@@ -2,11 +2,11 @@
 [![Flask](https://img.shields.io/badge/flask-v1.1.1-red.svg)](https://shields.io/)
 
 # Integrantes do Grupo 5
--   Douglas Souza (Desenvolvedor Fullstack)
--   Enzo Gerola (Desenvolvedor Back-end)
--   Gabriel Matos (Scrum Master)
--   Henrique Alexandre (Desenvolvedor Front-end)
--   José Elias (PO)
+-   Gabriel Matos - Scrum Master ([Linkedin](www.linkedin.com/in/gaamatoss))
+-   José Elias - Product Owner ([Linkedin](https://www.linkedin.com/in/josé-elias-o-b39190142/))
+-   Douglas De Souza - Desenvolvedor Fullstack ([Linkedin](https://www.linkedin.com/in/douglas-de-souza-gon%C3%A7alves-a296a214b/))
+-   Enzo Gerola - Desenvolvedor Fullstack ([Linkedin](https://www.linkedin.com/in/enzo-gerola-7b4700139/))
+-   Henrique Alexandre - Desenvolvedor Fullstack ([Linkedin](https://www.linkedin.com/in/henrique-souza-alexandre-30373016b/))
 
 # Visiona
 
