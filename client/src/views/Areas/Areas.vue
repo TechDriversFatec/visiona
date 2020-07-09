@@ -40,19 +40,27 @@
               
               <v-img
                 contain
-                :src="`https://assets.planet.com/images/meta-images/ag.jpg`"
+                :src="area.thumbnail"
               ></v-img>
               <v-card-text class="white--text">
+                <h4>ID: {{area.id}}</h4>
                 <h4>Percentual de nuvens: {{area.cloudiness}}</h4>
                 <h4>Satelite: {{area.satellite}}</h4>
                 <h4>Hectares: {{area.ha}}</h4>
                 <h4>Periodo: {{area.period}}</h4>
               </v-card-text>
               <v-card-actions>
+                <v-col>
+                  <v-row justify="center">
+                    <v-btn @click="baixarImagens(area.id)">Baixar</v-btn>
+                  </v-row>
+                </v-col>
+                <v-col>
+                  <v-row justify="center">
+                  <v-btn @click="processarImagens(area.id)">Processar</v-btn>
+                  </v-row>
+                </v-col>
 
-                <v-row justify="center">
-                  <v-btn>Processar imagens</v-btn>
-                </v-row>
               </v-card-actions>
             </v-card>
           </v-col>

@@ -27,6 +27,16 @@ export default {
         Areas.retornarAreas(this.pagina).then(resposta =>{
           this.arrayAreas = resposta.data.areas;
         })
-      }
+      },
+      baixarImagens(area_id){
+        Areas.baixarImagens(area_id).then(resposta =>{
+          console.log(resposta)
+        })
+      },
+      processarImagens(area_id){
+        Areas.processarImagens(area_id).then(resposta =>{
+          console.log(resposta)
+        })
+      },
     },
   }
