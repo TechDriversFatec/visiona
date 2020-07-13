@@ -79,9 +79,9 @@ analisar se ele está de acordo com a análise ou não.
 - ![Fluxograma](./docs/Fluxograma.png)
 
 ## Fotos do Produto Final
-- ![Login](https://prnt.sc/tgm3ru)
-- ![Cadastro](https://prnt.sc/tgm3wt)
-- ![Mapa](https://prnt.sc/tgm4zo)
-- ![Áreas](https://prnt.sc/tgm568)
-- ![Galeria](https://prnt.sc/tgm5d7)
-- ![Talhões](https://prnt.sc/tgm5h3)
+- ![Login](https://image.prntscr.com/image/hSB_GltDRAeuh_5ZzpqUQw.png)
+- ![Cadastro](https://image.prntscr.com/image/rT7j0whSTT28cSn2v6lkwQ.png)
+- ![Mapa](https://image.prntscr.com/image/gnNgmSxWTCK8Qw-Zojsing.png)
+- ![Áreas](https://image.prntscr.com/image/bFa0cpc1QqKzfUPU-mLJIA.png)
+- ![Galeria](https://image.prntscr.com/image/T4e9JLCbT2aQAhvGHdchCA.png)
+- ![Talhões](https://image.prntscr.com/image/vaVMs8ZRSYC_lSerwUTTSA.png)
