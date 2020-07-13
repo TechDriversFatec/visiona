@@ -15,17 +15,17 @@ Realizar um projeto em conjunto com a empresa Visiona, que consiste em criar um 
 
 Para facilitar no desenvolvimento do projeto, separamos ele em três partes:
 
-## Cliente
+## [Cliente](https://gitlab.com/douglas.souzag/webgis-visiona)
 
 Parte visual do WebGIS, responsável por abstrair a interação do usuário com os servidores de processamento de banco de dados, se encontra neste
 [repositório](https://gitlab.com/douglas.souzag/webgis-visiona) .
 
-## Servidor do Banco de Dados
+## [Servidor do Banco de Dados](https://gitlab.com/douglas.souzag/bd-server-visiona)
 
 Parte responsável por armazenar e retornar todas as informações dos usuários, areas e imagens processadas, se encontra neste
 [repositório](https://gitlab.com/douglas.souzag/bd-server-visiona) .
 
-## Servidor de Processamento
+## [Servidor de Processamento](https://gitlab.com/douglas.souzag/ia-server-visiona)
 
 Parte responsável pela identificação de talhões, e download das imagens, se encontra neste 
 [repositório](https://gitlab.com/douglas.souzag/ia-server-visiona) .
