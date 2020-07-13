@@ -1,12 +1,9 @@
-[![Python](https://img.shields.io/badge/python-v3.6-<COLOR>.svg)](https://shields.io/)
-[![Flask](https://img.shields.io/badge/flask-v1.1.1-red.svg)](https://shields.io/)
-
 # Integrantes do Grupo 5
--   Gabriel Matos - Scrum Master ([Linkedin](www.linkedin.com/in/gaamatoss))
--   José Elias - Product Owner ([Linkedin](https://www.linkedin.com/in/josé-elias-o-b39190142/))
 -   Douglas De Souza - Desenvolvedor Fullstack ([Linkedin](https://www.linkedin.com/in/douglas-de-souza-gon%C3%A7alves-a296a214b/))
 -   Enzo Gerola - Desenvolvedor Fullstack ([Linkedin](https://www.linkedin.com/in/enzo-gerola-7b4700139/))
+-   Gabriel Matos - Scrum Master ([Linkedin](www.linkedin.com/in/gaamatoss))
 -   Henrique Alexandre - Desenvolvedor Fullstack ([Linkedin](https://www.linkedin.com/in/henrique-souza-alexandre-30373016b/))
+-   José Elias - Product Owner ([Linkedin](https://www.linkedin.com/in/josé-elias-o-b39190142/))
 
 # Visiona
 
@@ -14,6 +11,24 @@
 
 Realizar um projeto em conjunto com a empresa Visiona, que consiste em criar um sistema web que define e gerencia os Talhões de uma determinada região através de uma IA, fornecida pela empresa todo o material de apoio para dar início ao projeto.
 
+# Servidores e Cliente
+
+Para facilitar no desenvolvimento do projeto, separamos ele em três partes:
+
+## Cliente
+
+Parte visual do WebGIS, responsável por abstrair a interação do usuário com os servidores de processamento de banco de dados, se encontra neste
+[repositório](https://gitlab.com/douglas.souzag/webgis-visiona) .
+
+## Servidor do Banco de Dados
+
+Parte responsável por armazenar e retornar todas as informações dos usuários, areas e imagens processadas, se encontra neste
+[repositório](https://gitlab.com/douglas.souzag/bd-server-visiona) .
+
+## Servidor de Processamento
+
+Parte responsável pela identificação de talhões, e download das imagens, se encontra neste 
+[repositório](https://gitlab.com/douglas.souzag/ia-server-visiona) .
 
 ## Objetivo do projeto
  	
@@ -26,7 +41,6 @@ O projeto será considerado um sucesso se atender a todos os critérios de aceit
 -	Identificar os talhões da região
 -	Traçar métricas para analisar a região e como foi sua evolução durante o tempo
 -	Desenvolver um sistema web para gerenciar todo o mapa com as informações
-
 
 ## Documentação do Projeto
 -   [Documentos](https://drive.google.com/drive/folders/1jpylCukXZ-dXyeXKhveL1e4h_6h6Z0hI?usp=sharing)
