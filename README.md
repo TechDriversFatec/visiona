@@ -71,5 +71,17 @@ para que assim a precisão de analise seja maior, juntamente com isso a equipe i
 como um serviço fazendo com que a analise gerada pela IA seja retornada para o usuário ver e
 analisar se ele está de acordo com a análise ou não.
 
+- [x] Entrega 6 --> [Video demonstrativo Entrega 6](https://drive.google.com/file/d/1RyW0nsovzc7xF6O0qX_BEoIRN2JH98Z5/view?usp=sharing)
+    
+    Nessa desenvolvemos os ultimos ajustes para a entrega final e para a apresentação para o cliente. Finalizamos toda a parte visual do produto e a parte da IA para o reconhecimetno dos talhões.
+
 ## Fluxograma
 - ![Fluxograma](./docs/Fluxograma.png)
+
+## Fotos do Produto Final
+- ![Login](https://prnt.sc/tgm3ru)
+- ![Cadastro](https://prnt.sc/tgm3wt)
+- ![Mapa](https://prnt.sc/tgm4zo)
+- ![Áreas](https://prnt.sc/tgm568)
+- ![Galeria](https://prnt.sc/tgm5d7)
+- ![Talhões](https://prnt.sc/tgm5h3)
