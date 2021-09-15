@@ -92,3 +92,6 @@ analisar se ele está de acordo com a análise ou não.
 ![Galeria](https://image.prntscr.com/image/T4e9JLCbT2aQAhvGHdchCA.png)
 - ## Talhões
 ![Talhões](https://image.prntscr.com/image/vaVMs8ZRSYC_lSerwUTTSA.png)
+# visiona
+# visiona
+# visiona
